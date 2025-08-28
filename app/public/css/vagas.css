@@ -1,5 +1,5 @@
 body {
-  background: #f0f0f0;
+  background: #fff;
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
@@ -14,20 +14,16 @@ main {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    justify-content: space-between;
+    gap: 5px;
 }
 
 .button-group {
     display: flex;
     width: 100%;
     background-color: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 4px;
-}
-
-.button-group button {
-  font-family: "Albert Sans" sans-serif;
-  font-weight: 500;
-  font-style: medium;
 }
 
 .toggle-button {
@@ -41,11 +37,15 @@ main {
     color: #333;
     border-radius: 8px;
     transition: all 0.3s ease;
+    font-size: 16px;
+    font-style: medium;
+    font-weight: 500;
 }
 
 .toggle-button.active {
     background-color: #FFC107;
     color: black;
+    
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -53,20 +53,8 @@ main {
     background-color: #e0e0e0;
 }
 
-.filter-box {
-  width: 320px;
-  max-width: 90%;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  font-family: sans-serif;
-  color: #333;
-  margin: 20px auto;
-  border: none;
-}
 
-/* Cabeçalho */
+
 .filter-header {
   display: flex;
   justify-content: space-between;
@@ -100,21 +88,8 @@ main {
   padding: 0;
 }
 
-.openfilter {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 1rem;
-  color: #555;
-  cursor: pointer;
-  justify-content: space-between;
-  gap: 5px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .filter-group {
-  border: none;
+  border: none; 
   padding: 0;
   margin: 0;
 }
@@ -126,7 +101,6 @@ main {
   margin-bottom: 15px;
 }
 
-/* Divisor */
 .divider {
   border: none;
   border-top: 1px solid #eee;
@@ -155,7 +129,7 @@ main {
   transition: all 0.2s ease;
 }
 
-.filter-options input[type="radio"]:checked + label {
+.filter-options input[type="radio"]:checked label {
   background-color: #ffcc00;
   color: #fff;
   border-color: #ffcc00;
@@ -187,12 +161,12 @@ main {
   transition: all 0.2s ease;
 }
 
-.checkbox-options input[type="checkbox"]:checked + label::before {
+.checkbox-options input[type="checkbox"]:checked label::before {
   background-color: #ffcc00;
   border-color: #ffcc00;
 }
 
-.checkbox-options input[type="checkbox"]:checked + label::after {
+.checkbox-options input[type="checkbox"]:checked label::after {
   content: "✓";
   position: absolute;
   color: #fff;
@@ -205,7 +179,138 @@ main {
     width: 18px;
 }
 
+.filtroinicial button {
+  border: none;
+  background-color: #fff;
+  color: #160B5D;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-style: semi-bold;
+  font-size: 16px;
+}
+
 .clear-filters img {
-  height: 16px;
-  width: 16px;
+  width: 18px;
+  height: 18px;
+}
+
+.button-group {
+  min-width: 250px;
+}
+
+.btn-filtrar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: #40366F;
+  }
+
+.filter-box {
+  display: none;
+}
+
+.filter-box.visivel {
+  display: block;
+}
+
+.card {
+ background: #fff;
+ border-radius: 12px;
+ box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+ overflow: hidden;
+ max-width: 320px;
+ color: #333;
+ display: flex;
+ flex-direction: column;
+ cursor: pointer;
+ transition: box-shadow 0.3s ease;
+}
+
+.card h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-style: medium;
+  font-size: 16px;
+}
+
+.card:hover {
+ box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card .card-image {
+ width: 100%;
+ height: auto;
+ display: block;
+ border-bottom: 1px solid #eee;
+}
+
+.card .card-content {
+ padding: 16px;
+}
+
+.card .card-title {
+ font-weight: 700;
+ font-size: 1.25rem;
+ margin: 0 0 4px 0;
+}
+
+.card .card-subtitle {
+ font-weight: 400;
+ font-size: 1rem;
+ margin: 0 0 12px 0;
+ color: #555;
+}
+
+.card .card-date {
+ font-weight: 300;
+ font-size: 0.875rem;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+
+main {
+    padding: 130px 40px 0 40px;
+  }
+
+.filter-box {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+.filter-box.visivel {
+  min-width: 250px;
+  max-width: 95%;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-family: sans-serif;
+  color: #333;
+  margin: 20px auto;
+  border: none;
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-options,
+.checkbox-options {
+ min-width: 100%; 
+}
+
+.card {
+  min-width: 250px;
+}
 }

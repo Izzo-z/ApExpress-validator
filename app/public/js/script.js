@@ -14,6 +14,16 @@ menuOverlay.addEventListener('click', () => {
   menuOverlay.classList.remove('open');
 });
 
+//função de fechar o menu hambuguer
+const closeMobileMenu = document.querySelector('.close-mobile-menu');
+if (closeMobileMenu) {
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuOverlay.classList.remove('open');
+  });
+}
+
+
 
 // função do botão vagas/cursos (ver como fazer para alternar a página)
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,8 +42,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 clickedButton.classList.add('active');
                 clickedButton.setAttribute('aria-pressed', 'true');
                 const target = clickedButton.dataset.target;
-                console.log(`Botão '${target}' foi selecionado.`);
             }
         });
     }
+});
+
+// filtrar
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btnFiltrar = document.querySelector('.btn-filtrar');
+  const filterBox = document.querySelector('.filter-box');
+  const closeBtn = document.querySelector('.close-btn');
+
+  if (btnFiltrar && filterBox) {
+    btnFiltrar.addEventListener('click', () => {
+      filterBox.classList.toggle('visivel');
+    });
+  }
+
+  if (closeBtn && filterBox) {
+    closeBtn.addEventListener('click', () => {
+      filterBox.classList.remove('visivel');
+    });
+  }
 });

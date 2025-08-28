@@ -18,7 +18,7 @@ body {
 
 .LOGIN {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
     color: #2B4062;
 }
 
@@ -51,7 +51,6 @@ body {
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
   text-align: left;
 }
 
@@ -61,13 +60,13 @@ body {
 }
 
 
-  .spanerro {
-      color: #a12929;
-      font-size: 0.95rem;
-      margin-left: 0.4rem;
-      display: inline-block;
-      min-height: 1.2em;
-    }
+.spanerro {
+  color: #a12929;
+  font-size: 0.95rem;
+  margin-left: 0.4rem;
+  display: inline-block;
+  min-height: 1.2em;
+}
   .erro{
     padding: 0.6rem;
     border: 1px solid #a12929;
@@ -76,7 +75,7 @@ body {
 .login-form input {
   padding: 0.6rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .password-wrapper {
 position: relative;
@@ -105,7 +104,7 @@ position: relative;
 .btn-secondary {
   padding: 0.8rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -165,14 +164,14 @@ position: relative;
 
 /* Responsividade */
 @media (min-width: 600px) {
-  .login-container {
-    width: 400px;
-    margin: 2rem auto;
-  }
+
+.login-container {
+  width: 400px;
+  margin: 2rem auto;
 }
 
 .LOGIN-Montserrat {
   font-family: "Montserrat", sans-serif;
-  font-weight: medium;
-  
+  font-weight: medium; 
+}
 }

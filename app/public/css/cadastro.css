@@ -43,7 +43,7 @@ body {
 .cad-form input {
   padding: 0.6rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 
@@ -53,14 +53,12 @@ body {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-}
-
-.btn-primary {
   background-color: #160B5D;
   color: white;
   width: 100%;
   text-decoration: none;
 }
+
 
 .form-section {
   background: #fff;
