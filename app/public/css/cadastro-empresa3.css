@@ -1,0 +1,229 @@
+
+:root {
+  --bg: #e6e6e6;
+  --card: #ffffff;
+  --primary: #160B5D; /* cor do título/botão */
+  --muted: #9b9bb3; /* cinza */
+  --secundary: #FFC52D; /* amarelo passos */
+  --input-border: #e6e6f0;
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.cad-container {
+  max-width: 380px;
+  margin: 20px auto;
+  padding: 18px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cadastro {
+  font-size: 34px;
+  color: var(--primary);
+  text-align: center;
+  margin: 4px 0 10px;
+  font-weight: 600;
+}
+
+.cad-form {
+  width: 100%;
+  background: var(--card);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(10,8,40,0.06);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* passos */
+.form-steps {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.form-steps li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-steps .step {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secundary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.form-steps li:nth-child(3) .step {
+  background: var(--muted);
+}
+
+.form-steps .step-label {
+  font-size: 12px;
+  color: #b07a00;
+  text-align: center;
+  line-height: 1.05;
+}
+
+.form-section p {
+  margin: 0 0 12px;
+  color: #444;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* inputs: suportar .form-input e inputs nativos dentro de .cad-form */
+.form-input,
+.cad-form input[type="text"],
+.cad-form input[type="tel"],
+.cad-form input[type="email"],
+.cad-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  background: #fff;
+  margin-top: 10px;
+  box-sizing: border-box;
+  outline: none;
+  color: #111;
+}
+
+.form-input::placeholder,
+.cad-form input::placeholder {
+  color: var(--muted);
+}
+
+.form-input:focus,
+.cad-form input:focus {
+  /* keep a subtle accessible focus but remove strong dark square */
+  box-shadow: 0 0 0 3px rgba(22,11,93,0.06);
+  border-color: rgba(22,11,93,0.12);
+}
+
+/* Ensure fieldsets don't render a default border that may look like a dark square */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove any unexpected outline that some browsers might show */
+.form-input,
+.cad-form input[type="text"],
+.cad-form input[type="tel"],
+.cad-form input[type="email"],
+.cad-form input[type="password"] {
+  outline: none;
+}
+
+.cad-form label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  text-align: center;
+}
+
+.cad-form fieldset.row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  border: none;
+  padding: 0;
+}
+
+.cad-form fieldset.row .col {
+  flex: 1;
+}
+
+.actions-section {
+  margin-top: 18px;
+}
+
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(22,11,93,0.12);
+}
+
+@media (max-width:640px) {
+  .cad-form {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .cad-container {
+    padding: 12px;
+  }
+
+  .btn-primary {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .cadastro {
+    font-size: 30px;
+  }
+
+  .step {
+    width: 34px;
+    height: 26px;
+  }
+}
+
+.cad-form .small-text {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.btn-add {
+  display: inline-block;
+  width: 100%;
+  background: var(--secundary);
+  color: #000;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}

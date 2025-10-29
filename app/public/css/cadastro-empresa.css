@@ -1,0 +1,223 @@
+:root{
+  --bg: #e6e6e6;
+  --card: #ffffff;
+  --accent: #f9c21b;
+  --muted: #9b9bb3;
+  --primary: #160B5D;
+  --secundary: #FFC52D;
+  --input-border: #e6e6f0;
+  --radius: 18px;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  background:var(--bg);
+}
+
+.cadastro{
+  text-align:center;
+  color:var(--primary);
+  font-size:34px;
+  margin:4px 0 10px;
+  font-weight:600;
+}
+
+.cad-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:18px 16px 40px;
+}
+
+.cad-form{
+  width:100%;
+  max-width:380px;
+  background:var(--card);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 6px 18px rgba(10,8,40,0.06);
+  box-sizing:border-box;
+  position:relative;
+}
+
+/* passos visuais: círculos numerados com rótulos abaixo */
+.form-steps{
+  display:flex;
+  list-style:none;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:8px;
+  padding:0;
+}
+.form-steps li{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+}
+.form-steps .step{
+  width:24px;
+  height:24px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--secundary);
+  color:#fff;
+  font-weight:700;
+  font-size:13px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.form-steps li:nth-child(2) .step,
+.form-steps li:nth-child(3) .step { background:#9b9bb3 }
+.form-steps .step-label{
+  font-size:12px;
+  color:#b07a00;
+  text-align:center;
+  line-height:1.05;
+}
+
+.cad-form input:focus{
+  box-shadow:0 0 0 3px rgba(22,11,93,0.06);
+  border-color: rgba(22,11,93,0.12);
+}
+
+.cad-form:before{
+  content:"";
+  display:block;
+  width:58px;
+  height:58px;
+  background:transparent;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%) translateY(-44px);
+  border-radius:12px;
+}
+
+.form-section p{
+  margin:0 0 12px 0;
+  color:#444;
+  font-size:14px;
+}
+
+
+.cad-form .form-section p,
+.cad-form label,
+.cad-form .small-text{
+  text-align: center;
+}
+
+.cad-form input[type="text"],
+.cad-form input[type="tel"],
+.cad-form input[type="email"],
+.cad-form input[type="password"]{
+  width:100%;
+  padding:12px 14px;
+  font-size:14px;
+  border-radius:12px;
+  border:1px solid var(--input-border);
+  background:#fff;
+  margin-top:10px;
+  box-sizing:border-box;
+  outline:none;
+  color:#111;
+  text-align: left; /* manter texto do input alinhado à esquerda */
+}
+
+/* make select match inputs visually */
+.cad-form select,
+.cad-form select:focus {
+  width:100%;
+  padding:12px 14px;
+  font-size:14px;
+  border-radius:12px;
+  border:1px solid var(--input-border);
+  background:#fff;
+  margin-top:10px;
+  box-sizing:border-box;
+  outline:none;
+  color:#111;
+  text-align: left;
+}
+
+.cad-form select:focus{
+  box-shadow:0 0 0 3px rgba(22,11,93,0.06);
+  border-color: rgba(22,11,93,0.12);
+}
+
+.cad-form input::placeholder{
+  color:var(--muted);
+}
+
+/* label estilo leve */
+.cad-form label{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:12px;
+}
+
+/* linha com dois inputs (CEP + complemento) */
+.cad-form fieldset.row{
+  /* fieldset usado para agrupar inputs em linha (CEP + complemento) */
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+  border:none;
+  padding:0;
+}
+.cad-form fieldset.row .col{
+  flex:1;
+}
+
+.actions-section{
+  margin-top:18px;
+}
+
+.btn-primary{
+  display:inline-block;
+  width:100%;
+  background:var(--primary);
+  color:#fff;
+  padding:12px 14px;
+  border-radius:12px;
+  border:none;
+  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(22,11,93,0.12);
+}
+
+/* responsivo: forma coluna menor */
+@media (max-width:640px){
+    main {
+        margin-top: 100px;
+    }
+  
+    .cad-form{ 
+    padding:18px; border-radius:16px; 
+    color: #111; 
+    font-family: 'Albert Sans', sans-serif;
+}
+
+  .cad-container{ 
+    padding:12px;
+ }
+  .btn-primary{ 
+    font-size:15px; padding:12px; 
+}
+
+  .cadastro {
+    margin-top: 8px;
+  }
+}
+
+.cad-form .small-text{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:8px;
+}

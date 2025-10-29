@@ -1,0 +1,229 @@
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  padding-top: 76px; /* Reduzido para ter menos espaço */
+}
+
+.menu-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #160B5D;
+  padding: 16px 32px;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.dstqMenu2[href="/login"] {
+  color: #FFC52D;
+}
+
+.dstqMenu2[href="/cadastro"] {
+  color: #FFC52D;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo img {
+  height: 48px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.icons {
+  display: flex;
+  gap: 24px;
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icone {
+  font-size: 1.25rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  background-color: #160B5D;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: min(400px, 100%);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+  z-index: 150;
+  padding: 32px 24px;
+  overflow-y: auto;
+  box-shadow: 8px 0 32px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+ul li {
+  font-family: 'Albert sans', sans-serif;
+}
+
+#menuOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  z-index: 99;
+}
+
+#menuOverlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu li {
+  margin: 24px 0;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 16px;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.mobile-menu a:hover {
+  color: #00C4FF;
+}
+
+.visitante {
+  font-weight: bold;
+}
+.mobile-menu p {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+}
+
+.close-mobile-menu {
+  position: fixed;
+  top: 16px;
+  right: max(16px, calc(50% - 200px));
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 200;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+  .close-mobile-menu {
+    right: 8px;
+  }
+
+.dstqMenu2 {
+  color: #FFC52D;
+  font-weight: inherit;
+  text-decoration: none;
+}
+.conector {
+  color: white;
+  font-weight: 300;
+}
+
+ul img {
+  margin-right: 10px;
+}
+
+@media (max-width: 640px) {
+  .menu-header {
+    padding: 16px;
+  }
+  
+  .menu-icon {
+    left: 16px;
+  }
+  
+  .icons {
+    right: 16px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+
+    body {
+    padding-top: 0px;
+  }
+}
+
+
+
+</style>
+<header class="menu-header">
+  <button class="menu-icon" id="menuHamburguer" aria-label="Abrir menu">
+    ☰
+  </button>
+  <span class="logo">
+    <img src="/img/logoapc.png" alt="Logo Ápice">
+  </span>
+  <span class="icons">
+    <button class="icone" aria-label="Perfil"><img src="/img/Icon.png"></button>
+  </span>
+  <nav class="mobile-menu" id="mobileMenu">
+  <button class="close-mobile-menu" aria-label="Fechar menu">&times;</button>
+    <ul>
+      <p>Olá, <span class="visitante">Jovem</span><br>
+      <li><a href="/"><span class="icon"><img src="img/casa.svg"></span>Home</a></li>
+      <li><a href="/perfil"><span class="icon"><img src="img/perfilempresa.svg"></span>Perfil da empresa</a></li>
+      <li><a href="/curriculo"><span class="icon"><img src="img/curriculo.svg"></span>Currículo</a></li>
+      <li><a href="/vagas"><span class="icon"><img src="img/vaga.svg"></span>Vaga</a></li>
+      <li><a href="/config"><span class="icon"><img src="img/config.svg"></span>Configurações</a></li>
+    </ul>
+  </nav>
+  <span id="menuOverlay"></span>
+</header>

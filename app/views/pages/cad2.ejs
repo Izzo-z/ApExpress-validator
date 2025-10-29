@@ -3,60 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro</title>
-  <link rel="stylesheet" href="/css/cad2.css" />  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" /> 
+  <title>Ápice</title>
+  <link rel="stylesheet" href="/css/cadastro-comum.css" />
+  <link rel="stylesheet" href="/css/validation.css" /> 
 </head>
 <body>
 
   <header>
-
     <%- include('../partials/menu') %>
-
     <h1 class="cadastro">Cadastro</h1>
-
   </header>
 
   <main class="cad-container">
 
-  <nav class="form-section">
+  <section class="form-section">
         <p>Informe suas informações para o registro</p>
-    <form class="cad-form">
+        
+        <!-- Mostrar erros gerais se existirem -->
+        <% if (typeof errors !== 'undefined' && errors && errors.length > 0) { %>
+          <article class="general-error">
+            <% errors.forEach(function(error) { %>
+              <%= error.msg %><br>
+            <% }) %>
+          </article>
+        <% } %>
+        
+    <form id="cad2Form" class="cad-form" method="POST" action="/cad2">
       <input type="text" id="rg" name="rg" placeholder="RG" required />
 
-      <input type="text" id="data" name="data" placeholder="Data de nascimento" required />
+      <input type="date" id="data" name="data" placeholder="Data de nascimento" required />
 
   
-      <input type="text" id="sexo" name="sexo" placeholder="Sexo" required />
+      <select id="sexo" name="sexo" required>
+        <option value="">Selecione o sexo</option>
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+      </select>
 
 
-      <input type="text" id="estado" name="estado" placeholder="Estado civil" required />
+      <select id="estado" name="estado" required>
+        <option value="">Estado civil</option>
+        <option value="solteiro">Solteiro(a)</option>
+        <option value="casado">Casado(a)</option>
+        <option value="divorciado">Divorciado(a)</option>
+        <option value="viuvo">Viúvo(a)</option>
+      </select>
 
 
       <input type="text" id="endereco" name="endereco" placeholder="Endereço" required />
 
-    <nav class="lado">
+    <section class="lado">
       <input type="text" id="cep" name="cep" placeholder="CEP" required class="cep"/>
 
-      <input type="text" id="complemento" name="complemento" placeholder="Complemento" required class="comp"/>
+      <input type="text" id="complemento" name="complemento" placeholder="Complemento" class="comp"/>
       
-    </nav>
-
+    </section>
 
     </form>
-  </nav> 
+  </section>
 
   <nav class="actions-section">
-      <button class="btn-primary">Próximo</button>
-  </nav>
-
-</main>
+      <button form="cad2Form" type="submit" class="btn-primary">Próximo</button>
+  </nav></main>
 
 <footer>
 
 </footer>
 
-<script src="/js/script.js"></script>
+<script src="/js/validation.js"></script>
+<script>
+// Inicializar validação para o formulário cad2
+document.addEventListener('DOMContentLoaded', function() {
+  const cad2Validator = initFormValidation('cad2Form');
+  
+  // Máscara para CEP
+  const cepInput = document.getElementById('cep');
+  if (cepInput) {
+    cepInput.addEventListener('input', function() {
+      let value = this.value.replace(/\D/g, '');
+      value = value.replace(/(\d{5})(\d{3})/, '$1-$2');
+      this.value = value;
+    });
+  }
+});
+</script>
 
 </body>
 </html>

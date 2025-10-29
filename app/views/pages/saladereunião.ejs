@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apice - Sala de Reuniões</title>
+  <link rel="stylesheet" href="/css/sala-reuniao.css">
+  <link rel="stylesheet" href="/css/home-jovem.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  </style>
+</head>
+<body>
+  <header>
+    <%- include('../partials/menu') %>
+  </header>
+
+  <main class="meeting-room-container">
+    <!-- Header Section -->
+    <section class="meeting-header">
+      <div class="header-content">
+        <div class="room-badge">
+          <i class="fas fa-video" aria-hidden="true"></i>
+          <h1 class="room-title">SALA DE REUNIÕES</h1>
+        </div>
+        <p class="room-subtitle">Conecte-se com sua equipe através de videochamadas</p>
+      </div>
+    </section>
+
+    <!-- Main Meeting Area -->
+    <section class="meeting-main">
+      <div class="meeting-content">
+        
+        <!-- Meeting Type Selector -->
+        <div class="meeting-type-selector">
+          <button class="meeting-type-btn active" data-type="interview">
+            <i class="fas fa-user-tie"></i>
+            <span>Entrevista</span>
+          </button>
+          <button class="meeting-type-btn" data-type="meeting">
+            <i class="fas fa-users"></i>
+            <span>Reunião</span>
+          </button>
+          <button class="meeting-type-btn" data-type="presentation">
+            <i class="fas fa-presentation"></i>
+            <span>Apresentação</span>
+          </button>
+        </div>
+
+        <!-- Video Call Area -->
+        <div class="video-call-area">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <div class="participant-info">
+                <div class="avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <span class="participant-name">Ana Vicente está esperando</span>
+              </div>
+              
+              <!-- Video Controls -->
+              <div class="video-controls">
+                <button class="control-btn camera-btn active" title="Câmera">
+                  <i class="fas fa-video"></i>
+                </button>
+                <button class="control-btn mic-btn active" title="Microfone">
+                  <i class="fas fa-microphone"></i>
+                </button>
+                <button class="control-btn screen-btn" title="Compartilhar tela">
+                  <i class="fas fa-desktop"></i>
+                </button>
+                <button class="control-btn settings-btn" title="Configurações">
+                  <i class="fas fa-cog"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meeting Info Panel -->
+        <div class="meeting-info-panel">
+          <div class="meeting-details">
+            <h3>Detalhes da Reunião</h3>
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Duração: 30 minutos</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-users"></i>
+              <span>Participantes: 2</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-lock"></i>
+              <span>Sala privada</span>
+            </div>
+          </div>
+
+          <!-- Participants List -->
+          <div class="participants-list">
+            <h4>Participantes</h4>
+            <div class="participant-item">
+              <div class="participant-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="participant-details">
+                <span class="participant-name">Ana Vicente</span>
+                <span class="participant-status waiting">Aguardando</span>
+              </div>
+            </div>
+            <div class="participant-item">
+              <div class="participant-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="participant-details">
+                <span class="participant-name">Você</span>
+                <span class="participant-status ready">Pronto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="meeting-actions">
+          <button class="btn-join primary">
+            <i class="fas fa-video"></i>
+            Entrar na Reunião
+          </button>
+          <button class="btn-schedule secondary">
+            <i class="fas fa-calendar-plus"></i>
+            Agendar Reunião
+          </button>
+          <button class="btn-invite tertiary">
+            <i class="fas fa-user-plus"></i>
+            Convidar Participantes
+          </button>
+        </div>
+
+        <!-- Quick Settings -->
+        <div class="quick-settings">
+          <div class="setting-group">
+            <label class="setting-label">
+              <input type="checkbox" checked>
+              <span class="checkmark"></span>
+              Câmera ligada por padrão
+            </label>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">
+              <input type="checkbox" checked>
+              <span class="checkmark"></span>
+              Microfone ligado por padrão
+            </label>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              Gravar reunião
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Recent Meetings -->
+    <section class="recent-meetings">
+      <div class="section-header">
+        <h2>Reuniões Recentes</h2>
+        <button class="view-all-btn">Ver todas</button>
+      </div>
+      <div class="meetings-grid">
+        <div class="meeting-card">
+          <div class="meeting-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <div class="meeting-info">
+            <h4>Entrevista - Desenvolvedor Jr</h4>
+            <p>23/10/2025 - 14:30</p>
+            <span class="meeting-status completed">Concluída</span>
+          </div>
+        </div>
+        <div class="meeting-card">
+          <div class="meeting-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="meeting-info">
+            <h4>Reunião de Equipe</h4>
+            <p>22/10/2025 - 10:00</p>
+            <span class="meeting-status completed">Concluída</span>
+          </div>
+        </div>
+        <div class="meeting-card">
+          <div class="meeting-icon">
+            <i class="fas fa-presentation"></i>
+          </div>
+          <div class="meeting-info">
+            <h4>Apresentação Projeto Alpha</h4>
+            <p>21/10/2025 - 16:00</p>
+            <span class="meeting-status completed">Concluída</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Meeting Modal -->
+  <div class="meeting-modal" id="meetingModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Configurações da Reunião</h3>
+        <button class="close-modal" id="closeModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Nome da reunião</label>
+          <input type="text" placeholder="Digite o nome da reunião">
+        </div>
+        <div class="form-group">
+          <label>Data e hora</label>
+          <input type="datetime-local">
+        </div>
+        <div class="form-group">
+          <label>Participantes</label>
+          <input type="email" placeholder="Digite o email dos participantes">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-modal-cancel">Cancelar</button>
+        <button class="btn-modal-confirm">Criar Reunião</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/sala-reuniao.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>

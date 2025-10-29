@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalhes da vaga <%= vaga.titulo %> - APICE">
+    <title><%= vaga.titulo %> | APICE</title>
+    <link rel="stylesheet" href="/css/vaga-detalhes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <%- include('../partials/menu') %>
+    </header>
+    
+    <main class="detalhes-container">
+        <!-- Botão Voltar -->
+        <nav class="navigation-container">
+            <button onclick="history.back()" class="btn-voltar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Voltar</span>
+            </button>
+        </nav>
+        
+        <!-- Header da vaga -->
+        <header class="vaga-header">
+            <figure class="empresa-logo-container">
+                <% if (vaga.imagem) { %>
+                    <img src="<%= vaga.imagem %>" alt="Logo da empresa" class="empresa-logo">
+                <% } else { %>
+                    <span class="empresa-logo-placeholder">
+                        <%= vaga.titulo ? vaga.titulo.charAt(0).toUpperCase() : 'R' %>
+                    </span>
+                <% } %>
+            </figure>
+            
+            <section class="vaga-info">
+                <h1 class="vaga-titulo"><%= vaga.titulo %></h1>
+                <p class="vaga-empresa">
+                    <% 
+                      let empresa = 'RIMBERIO';
+                      if (infoVagas && infoVagas[vaga.id] && infoVagas[vaga.id].empresa) {
+                        empresa = infoVagas[vaga.id].empresa;
+                      }
+                    %>
+                    <%= empresa %>
+                </p>
+            </section>
+            
+            <nav class="vaga-actions">
+                <form action="/candidatar" method="POST" style="width: 100%;">
+                    <input type="hidden" name="vagaId" value="<%= typeof vagaId !== 'undefined' ? vagaId : (typeof vaga !== 'undefined' ? vaga.id : '') %>">
+                    <button type="submit" class="btn-candidatar">
+                        <span>Candidatar-me</span>
+                    </button>
+                </form>
+            </nav>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <article class="conteudo-principal">
+            <!-- Descrição da Vaga -->
+            <section class="descricao-section">
+                <p class="descricao-texto">
+                    <%= vaga.descricao || 'Programa de estágio moderno, híbrido e voltado para pessoas com deficiência. Uma experiência completa que complementa a formação acadêmica e desenvolve competências comportamentais e técnicas.' %>
+                </p>
+                
+                <p class="descricao-detalhes">
+                    O programa RIMBERIO propicia experiências que agregam conhecimentos práticos à formação acadêmica e desenvolve competências técnicas e comportamentais dos participantes. Venha ser parte da nossa missão de transformar a educação por meio da tecnologia. Queremos pessoas diversas que gostam de cooperar e compartilhar conhecimentos, que tenham vontade de aprender sempre e que gostem de desafios. Acreditamos que a diversidade de backgrounds enriquece nosso time e nossa cultura organizacional.
+                </p>
+            </section>
+
+            <section class="requisitos-section">
+                <h2 class="section-title">Requisitos</h2>
+                <ul class="requisitos-lista">
+                    <% if (vaga.requisitos && Array.isArray(vaga.requisitos)) { %>
+                        <% vaga.requisitos.forEach(function(requisito) { %>
+                            <li class="requisito-item"><%= requisito %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="requisito-item">Estar cursando Ensino Superior em Administração, Economia, Engenharia ou áreas afins</li>
+                        <li class="requisito-item">Conhecimento em Excel (intermediário/avançado)</li>
+                        <li class="requisito-item">Conhecimento em Power BI (diferencial)</li>
+                        <li class="requisito-item">Disponibilidade para trabalhar 30h semanais</li>
+                        <li class="requisito-item">Residir na região metropolitana de São Paulo</li>
+                    <% } %>
+                </ul>
+            </section>
+
+            <!-- Seção Benefícios -->
+            <section class="beneficios-section">
+                <h2 class="section-title">Benefícios</h2>
+                <ul class="beneficios-grid">
+                    <% if (vaga.beneficios && Array.isArray(vaga.beneficios)) { %>
+                        <% vaga.beneficios.forEach(function(beneficio) { %>
+                            <li class="beneficio-item">
+                                <span class="beneficio-icon">✓</span>
+                                <span class="beneficio-texto"><%= beneficio %></span>
+                            </li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="beneficio-item">
+                            <span class="beneficio-icon">✓</span>
+                            <span class="beneficio-texto">Bolsa-auxílio</span>
+                        </li>
+                        <li class="beneficio-item">
+                            <span class="beneficio-icon">✓</span>
+                            <span class="beneficio-texto">Vale-transporte</span>
+                        </li>
+                        <li class="beneficio-item">
+                            <span class="beneficio-icon">✓</span>
+                            <span class="beneficio-texto">Assistência médica</span>
+                        </li>
+                        <li class="beneficio-item">
+                            <span class="beneficio-icon">✓</span>
+                            <span class="beneficio-texto">Assistência odontológica</span>
+                        </li>
+                        <li class="beneficio-item">
+                            <span class="beneficio-icon">✓</span>
+                            <span class="beneficio-texto">Day off aniversário</span>
+                        </li>
+                        <li class="beneficio-item">
+                            <span class="beneficio-icon">✓</span>
+                            <span class="beneficio-texto">Gympass</span>
+                        </li>
+                    <% } %>
+                </ul>
+            </section>
+        </article>
+    </main>
+    <script src="/js/script.js" defer></script>
+    <%- include('../partials/footer') %>
+</body>
+</html>

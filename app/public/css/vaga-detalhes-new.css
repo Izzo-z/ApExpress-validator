@@ -1,0 +1,490 @@
+/* ========== VAGA DETALHES - IDENTIDADE VISUAL DO SITE ========== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ========== VARIÁVEIS CSS ========== */
+:root {
+  /* Cores - Identidade Visual do Site */
+  --primary: #160B5D; /* Azul escuro principal */
+  --secondary: #FFC52D; /* Amarelo */
+  --bg: #f8f9fa; /* Fundo claro */
+  --card: #ffffff; /* Cards brancos */
+  --muted: #9b9bb3; /* Cinza */
+  --input-border: #e6e6f0;
+  
+  /* Cores de Texto */
+  --text-dark: #333;
+  --text-light: #666;
+  --text-muted: #9b9bb3;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 6px 18px rgba(10, 8, 40, 0.06);
+  
+  /* Border Radius */
+  --radius: 18px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  
+  /* Transições */
+  --transition: all 0.3s ease;
+}
+
+/* ========== RESET E BASE ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+  line-height: 1.5;
+  padding-top: 76px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+.detalhes-container {
+  max-width: 500px;
+  margin: 20px auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ========== HEADER DA VAGA ========== */
+.vaga-header {
+  background: var(--card);
+  padding: 30px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--input-border);
+}
+
+.empresa-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.empresa-logo,
+.empresa-logo-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+}
+
+.empresa-logo-placeholder {
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.vaga-info {
+  text-align: center;
+}
+
+.vaga-titulo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.vaga-empresa {
+  font-size: 16px;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.vaga-localizacao {
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.vaga-localizacao i {
+  font-size: 12px;
+}
+
+/* ========== CONTEÚDO PRINCIPAL ========== */
+.conteudo-principal {
+  padding: 28px 24px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title i {
+  font-size: 16px;
+  color: var(--secondary);
+}
+
+/* ========== SEÇÃO DESCRIÇÃO ========== */
+.descricao-section {
+  margin-bottom: 32px;
+}
+
+.descricao-texto {
+  font-size: 15px;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.descricao-detalhes {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ========== SEÇÃO REQUISITOS ========== */
+.requisitos-section {
+  margin-bottom: 32px;
+}
+
+.requisitos-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.requisito-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--secondary);
+}
+
+.requisito-icon {
+  color: var(--primary);
+  font-size: 14px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.requisito-texto {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* ========== SEÇÃO BENEFÍCIOS ========== */
+.beneficios-section {
+  margin-bottom: 32px;
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.beneficio-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-dark);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  transition: var(--transition);
+  border-left: 3px solid var(--secondary);
+}
+
+.beneficio-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.beneficio-icon {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 16px;
+  text-align: center;
+}
+
+.beneficio-texto {
+  flex: 1;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* ========== SEÇÃO DE STATUS ========== */
+.status-section {
+  border-top: 1px solid var(--input-border);
+  padding: 28px 24px;
+  background: var(--bg);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.status-info {
+  text-align: center;
+}
+
+.candidatos-count {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+/* ========== PROGRESS BAR ========== */
+.progress-container {
+  max-width: 200px;
+  margin: 0 auto;
+  height: 8px;
+  background: var(--input-border);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--secondary);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  position: relative;
+}
+
+/* ========== BOTÃO CANDIDATAR ========== */
+.candidatar-btn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.candidatar-btn:hover {
+  background: #1e0b7e;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.candidatar-btn:active {
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+/* Telas Grandes - Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .detalhes-container {
+    max-width: 600px;
+    margin: 40px auto;
+  }
+  
+  .vaga-header {
+    padding: 40px 32px;
+  }
+  
+  .empresa-logo,
+  .empresa-logo-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .vaga-titulo {
+    font-size: 28px;
+  }
+  
+  .vaga-empresa {
+    font-size: 18px;
+  }
+  
+  .conteudo-principal {
+    padding: 32px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+  
+  .descricao-texto {
+    font-size: 16px;
+  }
+  
+  .beneficios-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* Telas Médias - Tablet (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .detalhes-container {
+    max-width: 520px;
+    margin: 30px auto;
+  }
+  
+  .vaga-header {
+    padding: 36px 28px;
+  }
+  
+  .empresa-logo,
+  .empresa-logo-placeholder {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .vaga-titulo {
+    font-size: 26px;
+  }
+  
+  .vaga-empresa {
+    font-size: 17px;
+  }
+  
+  .conteudo-principal {
+    padding: 30px;
+  }
+  
+  .section-title {
+    font-size: 19px;
+  }
+  
+  .descricao-texto {
+    font-size: 15px;
+  }
+}
+
+/* Telas Pequenas - Mobile (até 767px) */
+@media (max-width: 767px) {
+  body {
+    padding-top: 70px;
+  }
+  
+  .detalhes-container {
+    margin: 16px;
+    max-width: none;
+  }
+  
+  .vaga-header {
+    padding: 24px 20px;
+  }
+  
+  .empresa-logo,
+  .empresa-logo-placeholder {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .vaga-titulo {
+    font-size: 22px;
+  }
+  
+  .vaga-empresa {
+    font-size: 15px;
+  }
+  
+  .conteudo-principal {
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 17px;
+  }
+  
+  .descricao-texto {
+    font-size: 14px;
+  }
+  
+  .requisito-item,
+  .beneficio-item {
+    padding: 12px;
+  }
+  
+  .status-section {
+    padding: 20px;
+  }
+  
+  .candidatar-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+/* Telas Extra Pequenas (até 480px) */
+@media (max-width: 480px) {
+  .detalhes-container {
+    margin: 12px;
+    border-radius: var(--radius-sm);
+  }
+  
+  .vaga-header {
+    padding: 20px 16px;
+  }
+  
+  .empresa-logo,
+  .empresa-logo-placeholder {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .vaga-titulo {
+    font-size: 20px;
+  }
+  
+  .conteudo-principal {
+    padding: 16px;
+  }
+  
+  .section-title {
+    font-size: 16px;
+  }
+  
+  .status-section {
+    padding: 16px;
+  }
+}

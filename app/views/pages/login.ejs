@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu Responsivo</title>
   <link rel="stylesheet" href="/css/login.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/validation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
  </style>
@@ -16,8 +16,8 @@
 <body>
   <%- include('../partials/menu') %>
 <%
-  let erroValidacao = { email: "", password: "" };
-  let msgErro = { email: "", password: "" };
+  let erroValidacao = { email: "", password: "", credencial: "", chave: "" };
+  let msgErro = { email: "", password: "", credencial: "", chave: "" };
 
   if (listaErros && listaErros.length > 0) {
     listaErros.forEach(function(erro) {
@@ -29,53 +29,152 @@
         erroValidacao.password = "erro";
         msgErro.password = erro.msg;
       }
+      if (erro.path === "credencial") {
+        erroValidacao.credencial = "erro";
+        msgErro.credencial = erro.msg;
+      }
+      if (erro.path === "chave") {
+        erroValidacao.chave = "erro";
+        msgErro.chave = erro.msg;
+      }
     });
   }
 %>
 
-  <main class="login-container">
-    
-<h1 class="LOGIN montserrat">Login</h1>
-<br>
-  <section class="form-section">
-        <p>Digite seus dados de acesso para entrar</p>
-    <form id="loginForm" action="/login/verify" method="post" class="login-form">
-      <input 
-      type="text" 
-      id="email" 
-      name="email" 
-      placeholder="Insira seu email"  
-      value="<%= email %>" 
-      class="input-base <%= erroValidacao.email %>" required/>
-      <span class="spanerro"><%= msgErro.email %> </span>
-      <input 
-      type="text" 
-      id="password" 
-      name="password" 
-      placeholder="Sua senha" 
-      value="<%= password %>" 
-      class="<%= erroValidacao.password %>" required/>
-      <span class="spanerro"><%= msgErro.password %></span>
+<main class="login-container">
+  <header>
+    <h1 class="login-title montserrat">Login</h1>
+  </header>
 
-      <a href="#" class="forgot-password">Esqueceu a senha?</a>
+  <!-- Mensagem de sucesso para cadastro -->
+  <% if (typeof query !== 'undefined' && query.cadastro === 'sucesso') { %>
+    <aside class="success-message">
+      Cadastro realizado com sucesso! Faça login para continuar.
+    </aside>
+  <% } %>
 
-    </form>
-  </section> 
- <!-- usar o fieldset, criando um fieldset para a área do formulário e outra para a área do botão que estarão localizados-->
-  <section class="actions-section">
-      <button form="loginForm" type="submit" class="btn-primary">Confirmar</button>
-      <button type="button" href="/cadastro" class="btn-secondary">Cadastre-se</button>
+  <nav class="profile-selector" role="tablist" aria-label="Tipo de perfil">
+    <% const tab = typeof activeTab !== 'undefined' ? activeTab : 'jovem'; %>
+    <button class="profile-tab <%= tab === 'jovem' ? 'active' : '' %>" id="jovem-tab" role="tab" aria-selected="<%= tab === 'jovem' ? 'true' : 'false' %>" aria-controls="jovem-content">Jovem</button>
+    <button class="profile-tab <%= tab === 'empresa' ? 'active' : '' %>" id="empresa-tab" role="tab" aria-selected="<%= tab === 'empresa' ? 'true' : 'false' %>" aria-controls="empresa-content">Empresa</button>
+  </nav>
 
-      <section class="social-login">
-      <img src="/img/google.png" alt="Login com Google" />
-      <img src="/img/microsoft.png" alt="Login com Microsoft" />
-      <img src="/img/meta.png" alt="Login com Meta" />
-      <img src="/img/Linkedi2.png" alt="Login com Linkedin" />
-  </section>
-
+  <main class="profile-content <%= tab === 'jovem' ? '' : 'hidden' %>" id="jovem-content" role="tabpanel" aria-labelledby="jovem-tab">
+    <section class="form-section">
+      <p class="form-description">Digite seus dados de acesso para entrar</p>
+      <form id="loginForm" action="/login/verify" method="post" class="login-form" data-login-type="jovem">
+        <section class="form-group">
+          <label for="email" class="visually-hidden">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Insira seu email"  
+            value="<%= typeof email !== 'undefined' ? email : '' %>" 
+            class="input-base <%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'email') ? 'input-error' : '') : '' %>" 
+            aria-describedby="email-error"
+            required
+          />
+          <span id="email-error" class="error-message"><%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'email') ? listaErros.find(erro => erro.path === 'email').msg : '') : '' %></span>
+        </section>
+        
+        <section class="form-group">
+          <label for="password" class="visually-hidden">Senha</label>
+          <article class="password-wrapper">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="Sua senha" 
+              value="<%= typeof password !== 'undefined' ? password : '' %>" 
+              class="input-base <%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'password') ? 'input-error' : '') : '' %>"
+              aria-describedby="password-error" 
+              required
+            />
+            <button type="button" class="toggle-password" aria-label="Mostrar/ocultar senha">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <span id="password-error" class="error-message"><%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'password') ? listaErros.find(erro => erro.path === 'password').msg : '') : '' %></span>
+        </section>
+        
+        <nav class="form-options">
+          <a href="/recuperar-senha" class="forgot-password">Esqueceu a senha?</a>
+        </nav>
+      </form>
     </section>
   </main>
-  <script src="/js/script.js"></script>
+
+  <main class="profile-content <%= tab === 'empresa' ? '' : 'hidden' %>" id="empresa-content" role="tabpanel" aria-labelledby="empresa-tab">
+    <section class="form-section">
+      <p class="form-description">Digite suas credenciais de empresa</p>
+      <form id="empresaForm" action="/login/empresa" method="post" class="login-form" data-login-type="empresa">
+        <section class="form-group">
+          <label for="credencial" class="visually-hidden">Credencial</label>
+          <input 
+            type="text" 
+            id="credencial" 
+            name="credencial" 
+            placeholder="Credencial de acesso"  
+            class="input-base <%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'credencial') ? 'input-error' : '') : '' %>" 
+            value="<%= typeof credencial !== 'undefined' ? credencial : '' %>"
+            aria-describedby="credencial-error"
+            required
+          />
+          <span id="credencial-error" class="error-message"><%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'credencial') ? listaErros.find(erro => erro.path === 'credencial').msg : '') : '' %></span>
+        </div>
+        
+        <section class="form-group">
+          <label for="chave" class="visually-hidden">Chave</label>
+          <article class="password-wrapper">
+            <input 
+              type="password" 
+              id="chave" 
+              name="chave" 
+              placeholder="Chave" 
+              class="input-base <%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'chave') ? 'input-error' : '') : '' %>" 
+              value="<%= typeof chave !== 'undefined' ? chave : '' %>"
+              aria-describedby="chave-error"
+              required
+            />
+            <button type="button" class="toggle-password" aria-label="Mostrar/ocultar chave">
+              <i class="fas fa-eye"></i>
+            </button>
+          </article>
+          <span id="chave-error" class="error-message"><%= typeof listaErros !== 'undefined' && listaErros !== null && listaErros.find ? (listaErros.find(erro => erro.path === 'chave') ? listaErros.find(erro => erro.path === 'chave').msg : '') : '' %></span>
+        </section>
+        
+        <nav class="form-options">
+          <a href="/recuperar-chave" class="forgot-password">Esqueceu a chave?</a>
+        </nav>
+      </form>
+    </section>
+  </main>
+
+  <section class="actions-section">
+    <button form="<%= tab === 'jovem' ? 'loginForm' : 'empresaForm' %>" type="submit" id="submit-btn" class="btn-primary">Confirmar</button>
+    <a href="/cadastro" id="btn-secondary" class="btn-secondary">Cadastre-se</a>
+    
+    <nav class="social-login" aria-label="Login com redes sociais">
+      <button class="social-login-btn" aria-label="Login com Google">
+        <img src="/img/google.png" alt="Google" />
+      </button>
+      <button class="social-login-btn" aria-label="Login com Microsoft">
+        <img src="/img/microsoft.png" alt="Microsoft" />
+      </button>
+      <button class="social-login-btn" aria-label="Login com Meta">
+        <img src="/img/meta.png" alt="Meta" />
+      </button>
+      <button class="social-login-btn" aria-label="Login com LinkedIn">
+        <img src="/img/Linkedi2.png" alt="LinkedIn" />
+      </button>
+    </div>
+  </section>
+</main>
+</main>
+<script src="/js/validation.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/script.js"></script>
 
   <footer>
     

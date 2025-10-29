@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ápice - Portal do Jovem</title>
+  <link rel="stylesheet" href="/css/vagas.css">
+  <link rel="stylesheet" href="/css/home-jovem.css">
+  <link rel="stylesheet" href="/css/job-card-icons-fix.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="main-header">
+    <%- include('../partials/menujovem') %>
+  </header>
+
+  <main class="dashboard-container">
+    <!-- Saudação e Busca -->
+    <section class="welcome-section">
+      <h1 class="greeting">Olá, Jovem!</h1>
+      <p class="tagline">Aqui você encontra suas oportunidades</p>
+      
+      <form class="search-form" action="/buscar" method="GET">
+        <input type="search" 
+               name="q" 
+               placeholder="Buscar novas vagas" 
+               class="search-input"
+               aria-label="Buscar vagas">
+        <button type="submit" class="search-btn" aria-label="Buscar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- Ações Rápidas -->
+    <section class="quick-actions">
+      <h2 class="section-title">Ações Rápidas</h2>
+      
+      <nav class="actions-grid">
+        <a href="/minhas-vagas" class="action-card processos">
+          <svg class="action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14,2 14,8 20,8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          <span class="action-text">Minhas Vagas</span>
+        </a>
+
+        <a href="/curriculo" class="action-card curriculo">
+          <svg class="action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="action-text">Atualizar currículo</span>
+        </a>
+
+        <a href="/sala-reuniao" class="action-card reunioes">
+          <svg class="action-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span class="action-text">Suas Reuniões</span>
+        </a>
+      </nav>
+    </section>
+
+    <!-- Vagas Visualizadas -->
+    <section class="viewed-jobs">
+      <header class="section-header">
+        <h2 class="section-title">Vagas Visualizadas</h2>
+        <a href="/vagas" class="view-all-link">Ver todas</a>
+      </header>
+
+      <section class="jobs-container">
+        <% if (vagas && vagas.length > 0) { %>
+          <% vagas.forEach(function(vaga) { %>
+            <%- include('../partials/job-card', { vaga: vaga }) %>
+          <% }); %>
+        <% } else { %>
+          <p class="no-jobs-message">Nenhuma vaga visualizada recentemente.</p>
+        <% } %>
+      </section>
+    </section>
+
+    <section class="scheduled-interviews">
+      <header class="section-header">
+        <h2 class="section-title">Entrevistas Agendadas</h2>
+      </header>
+
+      <ul class="interviews-list">
+        <li class="interview-item">
+          <time class="interview-date">
+            <span class="day">14</span>
+            <span class="month">NOV</span>
+          </time>
+          
+          <article class="interview-details">
+            <h3 class="interview-title">Operador de caixa</h3>
+            <p class="interview-company">Empresa</p>
+            <time class="interview-time">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              14:20 - 15:00h
+            </time>
+          </article>
+        </li>
+
+        <li class="interview-item">
+          <time class="interview-date">
+            <span class="day">15</span>
+            <span class="month">NOV</span>
+          </time>
+          
+          <article class="interview-details">
+            <h3 class="interview-title">Auxiliar de RH</h3>
+            <p class="interview-company">Empresa</p>
+            <time class="interview-time">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              Reagendar - Lista
+            </time>
+          </article>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <%- include('../partials/footer') %>
+  </footer>
+
+  <script>
+    // Adicionar interatividade para busca
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.querySelector('.search-input');
+      const searchForm = document.querySelector('.search-form');
+      
+      searchForm.addEventListener('submit', function(e) {
+        if (searchInput.value.trim() === '') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+    });
+  </script>
+<script src="/js/script.js" defer></script>
+</body>
+</html>

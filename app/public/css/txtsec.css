@@ -1,0 +1,7 @@
+.txtsec {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #333; /* Cor escura para contrastar com o fundo branco */
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}

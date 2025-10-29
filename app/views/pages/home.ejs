@@ -3,80 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Responsivo</title>
+  <title>Ápice</title>
+  <link rel="stylesheet" href="/css/hero.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/content.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/txtsec.css">
+
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
  </style>
 </head>
 <body>
   <%- include('../partials/menu') %>
-  <main>
-    <h1 class="textoinicio">
-    Recrutamos e desenvolvemos <span class="destaque">jovens talentos.</span>
-  </h1><br>
-    <h1 class="txthome">
-      Ajudamos <span class="destaque2">empresas</span> a selecionar e desenvolver seus <span class="destaque2">futuros talentos,</span> conectamos jovens ás melhores oportunidades no mercado de trabalho e também oferecemos <span class="destaque2">cursos de capacitação</span> para aprimorar suas habilidades.
-    </h1>
-    <br>
-<div class="btn-container">
-  <a class="btnhome" href="#">Quero uma oportunidade <span class="seta"><img src="/img/seta.png"></span></a>
-  <a class="btnhome" href="#">Quero conhecer os cursos <span class="seta"><img src="/img/seta.png"></span></a>
-  <a class="btnhome" href="#">Quero recrutar e desenvolver <span class="seta"><img src="/img/seta.png"></span></a>
-  <a href="#" class="saibamais">Conheça mais <br> <span class="arrow-down"><img src="/img/saibamais.png"></span></a>
-</div>
-    <br>
-    
-    <figure>
-      <img class="foto-grupo" src="/img/foto grupo.png">
-    </figure>
-    <br>
-    <br>
-    
-    <section class="destaque-secundaria">
-      <h1 class="txtsec"><span class="dtq-sec">Recrute</span> e <span class="dtq-sec">desenvolva</span> talentos com potencial.</h1>
-   <br> <p class="txt">Jornadas humanizadas que trazem <span class="dtq-sec2">flexibilidade</span> e <span class="dtq-sec2">diversidade</span> de ponta a ponta, com foco na experiência das pessoas candidatas, gestoras e RH.</p>
-   <br>
-    <div>
-  <a class="btnhome2" href="#">Quero recrutar <span ><img class="seta2" src="/img/seta2.png"></span></a>
-  <br>
-  <br>
-  <a class="btnhome3" href="#">Quero desenvolver <span><img class="seta2" src="/img/seta2.png"></span></a>
+  <section class="hero">
+    <img src="/img/homeee.svg" alt="Fundo do site Ápice" class="hero-img">
+    <div class="overlay">
+      <div class="title-container">
+        <h1 class="h1">Conectando jovens<br>talentos ao futuro.</h1>
+      </div>
+      <div class="content">
+        <p class="hero-description">O Ápice é a plataforma que facilita a entrada de jovens no mercado de trabalho, unindo empresas e candidatos em processos seletivos rápidos e assertivos.</p>
+      </div>
+      <div class="btn-container-hero">
+        <a class="btnhome" href="/vagas">Quero uma vaga <span class="seta"><img src="/img/seta.png"></span></a>
+        <a class="btnhome" href="#">Quero contratar <span class="seta"><img src="/img/seta.png"></span></a>
+      </div>
     </div>
-  
-  <br>
-  <br>
-
-  <figure>
-      <img class="foto-grupo2" src="/img/foto empresa 1.png">
-    </figure>
-    <br>
-
-      <h1 class="txtsec">Encontre a vaga ideal para seu<span class="dtq-sec"> inicio de carreira</span></h1>
-   <br> <p class="txt">Participe dos processos seletivos das <span class="dtq-sec2">maiores empresas </span>do país e impulsione a sua carreira através dos <span class="dtq-sec2">cursos da nossa plataforma.</span> </p>
-  <br>
-
-  <div>
-  <a class="btnhome4" href="#">Quero uma oportunidade <span ><img class="seta2" src="/img/seta2.png"></span></a>
-  <br>
-  <br>
-  <a class="btnhome5" href="#">
-  Quero impulsionar minha carreira
-  <span><img class="seta3" src="/img/seta2.png" alt="Seta"></span>
-</a>
-</div>
-  
-  <br>
-  <br>
-
-  <figure>
-      <img class="foto-grupo2" src="/img/foto jovem 1.png">
-    </figure>
-
   </section>
+  
+  <main>
+    <div class="vagas-title-band">
+      <h2 class="vagas-title">Últimas vagas postadas</h2>
+    </div>
+    <div class="carousel-container">
+    <div class="carousel-track">
+      <!-- Card 1 - ROLTA -->
+      <div class="carousel-slide">
+        <a href="/vagas/rolta" class="card-link">
+          <article class="card">
+            <img src="/img/rolta.png" alt="Foto do programa ROLTA Jovem Aprendiz" class="card-image" />
+            <section class="card-content">
+              <h2 id="title" class="card-title">ROLTA</h2>
+              <p class="card-subtitle">Programa Jovem Aprendiz - 2025</p>
+              <time datetime="2025-10-09">09/10</time> - <time datetime="2025-10-16">16/10</time>
+            </section>
+          </article>
+        </a>
+      </div>
+      
+      <!-- Card 2 - RIMBERIO -->
+      <div class="carousel-slide">
+        <a href="/vagas/rimberio" class="card-link">
+          <article class="card">
+            <img src="/img/rimberio.png" alt="Foto do programa RIMBERIO Estágio" class="card-image" />
+            <section class="card-content">
+              <h2 class="card-title">RIMBERIO</h2>
+              <p class="card-subtitle">Programa Estágio - 2025</p>
+              <time datetime="2025-10-30">30/10</time> - <time datetime="2025-12-01">01/12</time>
+            </section>
+          </article>
+        </a>
+      </div>
+      
+      <!-- Card 3 - CONTAFOR -->
+      <div class="carousel-slide">
+        <a href="/vagas/contafor" class="card-link">
+          <article class="card">
+            <img src="/img/contafor.png" alt="Foto do programa CONTAFOR Estágio Técnico" class="card-image" />
+            <section class="card-content">
+              <h2 class="card-title">CONTAFOR</h2>
+              <p class="card-subtitle">Estágio Técnico - 2025</p>
+              <time datetime="2025-09-15">15/09</time> - <time datetime="2025-10-30">30/10</time>
+            </section>
+          </article>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Indicadores do carrossel -->
+    <div class="carousel-indicators">
+      <span class="indicator active" data-index="0"></span>
+      <span class="indicator" data-index="1"></span>
+      <span class="indicator" data-index="2"></span>
+    </div>
+  </div>
+  
+  <div class="btn-container-carousel">
+    <a href="/vagas" class="btnhome btnhome-carousel">
+      Ver todas as vagas
+    </a>
+    </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Seção "Como funciona" -->
+  <div class="como-funciona-section">
+    <h2 class="como-funciona-title">Como funciona</h2>
+    
+    <div class="como-funciona-cards">
+      <!-- Card Para jovens -->
+      <div class="funciona-card">
+        <div class="funciona-icon">
+          <img src="/img/chapeuzinho.svg" alt="Ícone para jovens" class="icone-funciona">
+        </div>
+        <h3 class="funciona-card-title">Para jovens</h3>
+        <ul class="funciona-list">
+          <li><img src="/img/crie.seu.perfil.svg" alt="Ícone perfil" class="icon-item">Crie seu perfil</li>
+          <li><img src="/img/encontre.vagas.svg" alt="Ícone busca" class="icon-item">Encontre vagas</li>
+          <li><img src="/img/processos.svg" alt="Ícone documento" class="icon-item">Participe dos processos</li>
+        </ul>
+        <p class="funciona-stats"><h4>+2.000 jovens já conseguiram entrevistas pelo Ápice.</h4></p>
+      </div>
+      
+      <!-- Card Para empresas -->
+      <div class="funciona-card">
+        <div class="funciona-icon">
+          <img src="/img/predios.svg" alt="Ícone para empresas" class="icone-funciona">
+        </div>
+        <h3 class="funciona-card-title">Para empresas</h3>
+        <ul class="funciona-list">
+          <li><img src="/img/publique.vagas.svg" alt="Ícone publicação" class="icon-item">Publique vagas</li>
+          <li><img src="/img/receba.svg" alt="Ícone usuário" class="icon-item">Receba candidatos</li>
+          <li><img src="/img/contrate.svg" alt="Ícone aperto de mão" class="icon-item">Contrate com facilidade</li>
+        </ul>
+        <p class="funciona-stats"><h4>+100 empresas já contratam pelo Ápice</h4></p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Seção Principais Clientes -->
+  <div class="clientes-section">
+    <h2 class="clientes-title">Principais clientes</h2>
+    
+    <div class="clientes-slider-container">
+      <div class="clientes-slider-track">
+        <!-- Logos - Primeiro conjunto -->
+        <div class="cliente-slide">
+          <img src="/img/coca.cola.svg" alt="Logo Coca-Cola" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/assai.svg" alt="Logo Assaí" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/atacadao.svg" alt="Logo Atacadão" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/carrefour.svg" alt="Logo Carrefour" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/eletro.svg" alt="Logo Eletros" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/magalu.svg" alt="Logo Magazine Luiza" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/renner.svg" alt="Logo Renner" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/vivo.svg" alt="Logo Vivo" class="cliente-logo">
+        </div>
+        
+        <!-- Logos duplicados para efeito de loop infinito -->
+        <div class="cliente-slide">
+          <img src="/img/coca.cola.svg" alt="Logo Coca-Cola" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/assai.svg" alt="Logo Assaí" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/atacadao.svg" alt="Logo Atacadão" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/carrefour.svg" alt="Logo Carrefour" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/eletro.svg" alt="Logo Eletros" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/magalu.svg" alt="Logo Magazine Luiza" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/renner.svg" alt="Logo Renner" class="cliente-logo">
+        </div>
+        <div class="cliente-slide">
+          <img src="/img/vivo.svg" alt="Logo Vivo" class="cliente-logo">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Seção de Depoimentos/Avaliações -->
+  <div class="avaliacoes-carousel-container">
+    <div class="avaliacoes-carousel-track">
+      <!-- Card 1 - Natura -->
+      <div class="avaliacoes-carousel-slide">
+        <article class="avaliacao-card">
+          <div class="avaliacao-texto-container">
+            <p class="avaliacao-texto">"A Ápice facilitou muito a minha busca por emprego. Encontrei uma vaga na Natura e consegui a entrevista em poucos dias. Hoje, estou trabalhando no setor logístico e aprendendo bastante. É uma plataforma que realmente conecta a gente com empresas de verdade."</p>
+            <div class="avaliacao-autor-dentro">
+              <h3 class="avaliacao-nome-dentro">Ana Beatriz Martins</h3>
+              <p class="avaliacao-empresa-dentro">Contratada pela Natura</p>
+            </div>
+          </div>
+          <div class="avaliacao-logo-container">
+            <img src="/img/natura.svg" alt="Logo Natura" class="avaliacao-logo" />
+          </div>
+        </article>
+      </div>
+      
+      <!-- Card 2 - Vazio -->
+      <div class="avaliacoes-carousel-slide">
+        <article class="avaliacao-card">
+          <div class="avaliacao-texto-container">
+            <p class="avaliacao-texto">"Estamos muito satisfeitos com a plataforma! Conseguimos publicar vagas de forma rápida e organizada, além de receber candidatos qualificados com facilidade. Isso tornou nosso processo de contratação muito mais eficiente."</p>
+            <div class="avaliacao-autor-dentro">
+              <h3 class="avaliacao-nome-dentro">Jorge Bertoso</h3>
+              <p class="avaliacao-empresa-dentro">CEO da Casa Santa | Grafiske Losninger</p>
+            </div>
+          </div>
+          <div class="avaliacao-logo-container">
+            <img src="/img/casanta.svg" alt="Logo Empresa" class="avaliacao-logo" />
+          </div>
+        </article>
+      </div>
+      
+      <!-- Card 3 - Vazio -->
+      <div class="avaliacoes-carousel-slide">
+        <article class="avaliacao-card">
+          <div class="avaliacao-texto-container">
+            <p class="avaliacao-texto">“Ficamos impressionados com a qualidade dos jovens inscritos pela Ápice. É visível o interesse deles em aprender e crescer profissionalmente. A plataforma facilitou muito o contato direto e o acompanhamento das etapas.”</p>
+            <div class="avaliacao-autor-dentro">
+              <h3 class="avaliacao-nome-dentro">Henrique Braun</h3>
+              <p class="avaliacao-empresa-dentro"> CEO da Coca-Cola</p>
+            </div>
+          </div>
+          <div class="avaliacao-logo-container">
+            <img src="/img/coca.cola.svg" alt="Logo Empresa" class="avaliacao-logo" />
+          </div>
+        </article>
+      </div>
+      
+      <!-- Card 4 - Vazio -->
+      <div class="avaliacoes-carousel-slide">
+        <article class="avaliacao-card">
+          <div class="avaliacao-texto-container">
+            <p class="avaliacao-texto">“Eu estava procurando meu primeiro emprego e a Ápice foi essencial. Me inscrevi em uma vaga do Habib’s e logo tive retorno. Gostei muito da praticidade e da forma como a plataforma valoriza o potencial dos jovens.”</p>
+            <div class="avaliacao-autor-dentro">
+              <h3 class="avaliacao-nome-dentro">Juliana Souza</h3>
+              <p class="avaliacao-empresa-dentro">Contratada pelo Habib's</p>
+            </div>
+          </div>
+          <div class="avaliacao-logo-container">
+            <img src="/img/habibs.png" alt="Logo Empresa" class="avaliacao-logo" />
+          </div>
+        </article>
+      </div>
+      
+      <!-- Card 5 - Vazio -->
+      <div class="avaliacoes-carousel-slide">
+        <article class="avaliacao-card">
+          <div class="avaliacao-texto-container">
+            <p class="avaliacao-texto">“A parceria com a Ápice tem sido muito positiva. Conseguimos preencher vagas de estágio e jovem aprendiz com candidatos engajados e bem preparados. O processo de divulgação e seleção foi simples e ágil.”
+</p>
+            <div class="avaliacao-autor-dentro">
+              <h3 class="avaliacao-nome-dentro">Luiza Helena Trajano</h3>
+              <p class="avaliacao-empresa-dentro">CEO do Magazine Luiza</p>
+            </div>
+          </div>
+          <div class="avaliacao-logo-container">
+            <img src="/img/magalu.svg" alt="Logo Empresa" class="avaliacao-logo" />
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <!-- Indicadores -->
+    <div class="avaliacoes-carousel-indicators">
+      <span class="avaliacoes-indicator active" data-slide="0"></span>
+      <span class="avaliacoes-indicator" data-slide="1"></span>
+      <span class="avaliacoes-indicator" data-slide="2"></span>
+      <span class="avaliacoes-indicator" data-slide="3"></span>
+      <span class="avaliacoes-indicator" data-slide="4"></span>
+    </div>
+  </div>
+  
+  <!-- Removidos espaços desnecessários -->
+
       </main>
   <script src="/js/script.js"></script>
   <%- include('../partials/footer') %>

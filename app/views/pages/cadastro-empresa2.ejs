@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="/css/cadastro-comum.css" />
+  <link rel="stylesheet" href="/css/validation.css" />
+</head>
+
+<body>
+
+  <header>
+    <%- include('../partials/menu') %>
+  </header>
+
+  <main class="cad-container">
+    <h1 class="cadastro" style="display: block !important; visibility: visible !important; color: #160B5D !important; font-size: 34px !important; text-align: center !important; margin: 20px 0 !important; font-weight: 600 !important; font-family: 'Poppins', sans-serif !important;">Cadastro</h1>
+
+    <form id="empresaForm2" class="cad-form" action="/cadastro-empresa2" method="POST" novalidate>
+      <section class="form-section">
+        <p>Digite os dados da sua empresa para se cadastrar</p>
+
+        <% if (locals.errors && errors.length > 0) { %>
+          <article class="error-container">
+            <ul class="error-list">
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }); %>
+            </ul>
+          </article>
+        <% } %>
+
+        <input type="text" id="nome" name="nome" placeholder="Nome" 
+               value="<%= locals.form ? form.nome || '' : '' %>" 
+               class="<%= locals.errors && errors.find(e => e.param === 'nome') ? 'input-error' : '' %>" />
+        <span class="field-error"><%= locals.errors && errors.find(e => e.param === 'nome') ? errors.find(e => e.param === 'nome').msg : '' %></span>
+
+        <input type="text" id="cargo" name="cargo" placeholder="Cargo" 
+               value="<%= locals.form ? form.cargo || '' : '' %>" 
+               class="<%= locals.errors && errors.find(e => e.param === 'cargo') ? 'input-error' : '' %>" />
+        <span class="field-error"><%= locals.errors && errors.find(e => e.param === 'cargo') ? errors.find(e => e.param === 'cargo').msg : '' %></span>
+
+        <input type="email" id="email" name="email" placeholder="Email institucional" 
+               value="<%= locals.form ? form.email || '' : '' %>" 
+               class="<%= locals.errors && errors.find(e => e.param === 'email') ? 'input-error' : '' %>" />
+        <span class="field-error"><%= locals.errors && errors.find(e => e.param === 'email') ? errors.find(e => e.param === 'email').msg : '' %></span>
+
+        <input type="tel" id="telefone" name="telefone" placeholder="Telefone comercial" 
+               value="<%= locals.form ? form.telefone || '' : '' %>" 
+               class="<%= locals.errors && errors.find(e => e.param === 'telefone') ? 'input-error' : '' %>" />
+        <span class="field-error"><%= locals.errors && errors.find(e => e.param === 'telefone') ? errors.find(e => e.param === 'telefone').msg : '' %></span>
+      </section>
+      </form>
+
+      <nav class="actions-section">
+        <button type="button" class="btn-secondary" onclick="window.location.href='/cadastro-empresa'">Voltar</button>
+        <button type="button" class="btn-primary" onclick="window.location.href='/'">Confirmar</button>
+      </nav>
+  </main>
+
+  <footer></footer>
+  
+  <script src="/js/validation.js"></script>
+  <script>
+  // Inicializar validação para o formulário cadastro-empresa2
+  document.addEventListener('DOMContentLoaded', function() {
+    const empresaValidator2 = initFormValidation('empresaForm2');
+    
+    // Função para remover formatação antes do envio
+    function digits(value) {
+      return (value || '').replace(/\D/g, '');
+    }
+
+
+    const form = document.getElementById('empresaForm2');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        const telefoneInput = form.querySelector('#telefone');
+        if (telefoneInput) {
+          telefoneInput.value = digits(telefoneInput.value);
+        }
+      }, { capture: true });
+    }
+  });
+  </script>
+
+</body>
+</html>

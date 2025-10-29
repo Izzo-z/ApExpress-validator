@@ -1,0 +1,28 @@
+# Arquivos a serem ignorados pelo Git
+
+# Dependências
+node_modules/
+package-lock.json
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+
+RESUMO_OTIMIZACAO.md
+arquivos-para-remover.txt
+/dist
+/.cache
+VALIDACAO_PADRONIZADA.md
+PADRONIZACAO_FRONTEND.md

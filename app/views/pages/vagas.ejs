@@ -3,180 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Responsivo</title>
+  <title>Apice - Vagas</title>
   <link rel="stylesheet" href="/css/vagas.css">
+  <link rel="stylesheet" href="/css/home-jovem.css">
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
  </style>
 </head>
 <body>
+  <header>
     <%- include('../partials/menu') %>
-    <main>
+  </header>
+  <main>
+    <section class="vagas-header">
+        <article style="padding: 20px 25px;">
+            <nav style="display: flex; align-items: center; margin-bottom: 8px;">
+                <img src="/img/mala.svg" alt="">
+                <h1 style="font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 600; color: #FFC52D; margin: 0; margin-left: 8px;">VAGAS</h1>
+            </nav>
+            
+            <p style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #333; margin: 0 0 15px 0;">Pesquise e encontre sua vaga ideal!</p>
+            
+            <div style="display: flex; align-items: center; width: 100%; gap: 8px;">
+              <form class="search-form" action="/buscar" method="GET">
+                <input type="search" 
+                       name="q" 
+                       placeholder="Buscar novas vagas" 
+                       class="search-input"
+                       aria-label="Buscar vagas">
+                <button type="submit" class="search-btn" aria-label="Buscar">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
+                </button>
+              </form>
+              
+              <button id="btnMostrarFiltro" style="background: none; border: none; padding: 0; margin: 0; font-size: 20px; color: #160B5D; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; cursor: pointer; border-radius: 50%; transition: all 0.3s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 16 16" stroke="#160B5D" stroke-width="1.5">
+                  <path d="M1.5 3a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </button>
+            </div>
+        </article>
+    </section>
+
     <section class="filter-wrapper">
-        <nav class="filtroinicial">
-          <button class="btn-filtrar">
-            <img src="/img/filtro.png" alt= "Ícone de filtro" class="filter-icon">
-            Filtrar
-            </button>
-        </nav>
+        <div class="filter-overlay" id="filterOverlay"></div>
+        <aside class="filter-box" id="filterBox">
+          <nav class="filter-header">
+            <button type="button" class="close-btn">&times;</button>
+          </nav>
 
-        
+          <form class="filter-form">
+            <!-- Local -->
+            <fieldset class="filter-group">
+              <input type="text" class="filter-input" placeholder="Local...">
+            </fieldset>
 
+            <!-- Formato de trabalho -->
+            <fieldset class="filter-group">
+              <legend class="filter-legend">Formato de trabalho</legend>
+              <nav class="format-options">
+                <label class="format-option">
+                  <input type="radio" name="formato" value="presencial">
+                  <span class="format-label">Presencial</span>
+                </label>
+                <label class="format-option">
+                  <input type="radio" name="formato" value="hibrido">
+                  <span class="format-label">Híbrido</span>
+                </label>
+                <label class="format-option">
+                  <input type="radio" name="formato" value="remoto">
+                  <span class="format-label">Remoto</span>
+                </label>
+              </nav>
+            </fieldset>
 
-        <form class="filter-box">
-  <nav class="filter-header">
-    <span class="clear-filters">
-      <img src="/img/filtro2.png">
-      Limpar Filtros
-    </span>
-    <button type="button" class="close-btn">&times;</button>
-  </nav>
+            <!-- Área -->
+            <fieldset class="filter-group">
+              <legend class="filter-legend">Área</legend>
+              <select class="filter-select">
+                <option value="">Selecione</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="vendas">Vendas</option>
+                <option value="marketing">Marketing</option>
+                <option value="rh">Recursos Humanos</option>
+                <option value="financeiro">Financeiro</option>
+              </select>
+            </fieldset>
 
-  <fieldset class="filter-group">
-    <legend class="filter-title">Duração</legend>
-    <nav class="filter-options">
-      <input type="radio" id="duracao-curta" name="duracao" value="curta" />
-      <label for="duracao-curta">Curta duração</label>
+            <!-- Faixa salarial -->
+            <fieldset class="filter-group">
+              <legend class="filter-legend">Faixa salarial</legend>
+              <select class="filter-select">
+                <option value="">Selecione</option>
+                <option value="ate-1000">Até R$ 1.000</option>
+                <option value="1000-2000">R$ 1.000 - R$ 2.000</option>
+                <option value="2000-3000">R$ 2.000 - R$ 3.000</option>
+                <option value="3000-5000">R$ 3.000 - R$ 5.000</option>
+                <option value="acima-5000">Acima de R$ 5.000</option>
+              </select>
+            </fieldset>
 
-      <input type="radio" id="duracao-media" name="duracao" value="media" />
-      <label for="duracao-media">Média duração</label>
+            <!-- Contrato -->
+            <fieldset class="filter-group">
+              <legend class="filter-legend">Contrato</legend>
+              <select class="filter-select">
+                <option value="">Selecione</option>
+                <option value="estagio">Estágio</option>
+                <option value="jovem-aprendiz">Jovem Aprendiz</option>
+                <option value="trainee">Trainee</option>
+                <option value="clt">CLT</option>
+                <option value="pj">PJ</option>
+              </select>
+            </fieldset>
 
-      <input type="radio" id="duracao-longa" name="duracao" value="longa" />
-      <label for="duracao-longa">Longa duração</label>
-    </nav>
-  </fieldset>
+            <!-- Botões -->
+            <nav class="filter-actions">
+              <button type="submit" class="btn-apply">Aplicar filtros</button>
+              <button type="button" class="btn-clear" id="limparFiltros">Limpar</button>
+            </nav>
+          </form>
+        </aside>
+    </section>
 
-  <hr class="divider" />
-
-  <fieldset class="filter-group">
-    <legend class="filter-title">Tipos de cursos</legend>
-    <nav class="filter-options checkbox-options">
-      <input
-        type="checkbox"
-        id="desenv"
-        name="tipos_cursos"
-        value="desenvolvimento"
-      />
-      <label for="desenv">Desenvolvimento Profissional e Pessoal</label>
-
-      <input type="checkbox" id="negocios" name="tipos_cursos" value="negocios" />
-      <label for="negocios">Negócios e Inovação</label>
-
-      <input
-        type="checkbox"
-        id="programacao"
-        name="tipos_cursos"
-        value="programacao"
-      />
-      <label for="programacao">Programação</label>
-
-      <input type="checkbox" id="ti" name="tipos_cursos" value="ti" />
-      <label for="ti">Tecnologia da Informação</label>
-    </nav>
-  </fieldset>
-
-  <hr class="divider" />
-
-  <fieldset class="filter-group">
-    <legend class="filter-title">Nível de dificuldade</legend>
-    <nav class="filter-options">
-      <input
-        type="radio"
-        id="dificuldade-iniciante"
-        name="dificuldade"
-        value="iniciante"
-      />
-      <label for="dificuldade-iniciante">Iniciante</label>
-
-      <input
-        type="radio"
-        id="dificuldade-intermediario"
-        name="dificuldade"
-        value="intermediario"
-      />
-      <label for="dificuldade-intermediario">Intermediário</label>
-
-      <input
-        type="radio"
-        id="dificuldade-avancado"
-        name="dificuldade"
-        value="avancado"
-      />
-      <label for="dificuldade-avancado">Avançado</label>
-    </nav>
-  </fieldset>
-</form>
-
-        <nav class="button-group">
-            <button class="toggle-button active" data-target="vagas" aria-pressed="true">Vagas</button>
-            <button class="toggle-button" data-target="cursos" aria-pressed="false">Cursos</button>
-        </nav>
-  <br>
-  <br>
-
-
-
-
-
-
-<article class="card">
-  <img src="/img/rolta.png" alt="Foto do programa ROLTA Jovem Aprendiz" class="card-image" />
-  <section class="card-content">
-    <h2 id="title" class="card-title">ROLTA</h2>
-    <p class="card-subtitle">Programa Jovem Aprendiz - 2025</p>
-    <time datetime="2025-10-09">09/10</time> - <time datetime="2025-10-16">16/10</time>
-  </section>
-</article>
-<br>
-<br>
-
-
-
-
-
-<article class="card">
-  <img src="/img/rimberio.png" alt="Foto do programa rimberio Jovem Aprendiz" class="card-image" />
-  <section class="card-content">
-    <h2 class="card-title">RIMBERIO</h2>
-    <p class="card-subtitle">Programa Estágio - 2025</p>
-    <time datetime="2025-10-30">30/10</time> - <time datetime="2025-12-01">01/12</time>
-  </section>
-</article>
-<br>
-<br>
-
-
-
-
-
-<article class="card">
-  <img src="/img/contafor.png" alt="Foto do programa CONTAFOR Jovem Aprendiz" class="card-image" />
-  <section class="card-content">
-    <h2 class="card-title">CONTAFOR</h2>
-    <p class="card-subtitle">Estágio Técnico - 2025</p>
-    <time datetime="2025-09-15">15/09</time> - <time datetime="2025-10-30">30/10</time>
-  </section>
-</article>
-<br>
-<br>
-
-
-
-
-
-<article class="card">
-  <img src="/img/borcelle.png" alt="Foto do programa BORCELLE Jovem Aprendiz" class="card-image" />
-  <section class="card-content">
-    <h2 class="card-title">BORCELLE</h2>
-    <p class="card-subtitle">Trainee - 2025</p>
-    <time datetime="2025-11-04">04/11</time> - <time datetime="2025-11-24">24/11</time>
-  </section>
-</article>
+<section class="jobs-container">
+  <% if (vagas && Object.keys(vagas).length) { %>
+    <% Object.values(vagas).forEach(function(vaga) { %>
+      <%- include('../partials/job-card', { vaga: vaga }) %>
+    <% }) %>
+  <% } else { %>
+    <p>Nenhuma vaga encontrada.</p>
+  <% } %>
+</section>
   </section>
     </main>
+    <br>
+    <br>
+    <script>
+      // Adicionar interatividade para busca
+      document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.querySelector('.search-input');
+        const searchForm = document.querySelector('.search-form');
+        
+        if (searchForm && searchInput) {
+          searchForm.addEventListener('submit', function(e) {
+            if (searchInput.value.trim() === '') {
+              e.preventDefault();
+              searchInput.focus();
+            }
+          });
+        }
+      });
+    </script>
     <script src="/js/script.js"></script>
+    <script src="/js/filtros.js"></script>
+    <footer>
     <%- include('../partials/footer') %>    
-</body>
- 
+    </footer>
+  </body>

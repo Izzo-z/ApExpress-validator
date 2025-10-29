@@ -1,0 +1,714 @@
+/* Extensão do background azul removida - agora o hero section ocupa todo o espaço necessário */
+
+.vagas-title-band {
+  position: relative;
+  background-color: #FFC52D; /* Amarelo */
+  padding: 15px 0;
+  border-radius: 10px 10px 0 0;
+  margin-top: -20px; /* Posiciona em cima do azul */
+  z-index: 5;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.vagas-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  color: #160B5D; /* Azul escuro para o título */
+  display: inline-block; /* Permite que o texto se ajuste à largura disponível */
+}
+
+/* Removido o wrapper de conteúdo para deixar os cards soltos */
+
+/* Estilos para o carrossel */
+.carousel-container {
+  margin-top: 20px; /* Espaçamento entre o título e o carrossel */
+  width: 92%; /* Alinhado com a largura da página */
+  max-width: 320px; /* Tamanho máximo para o carousel */
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 30px; /* Espaço para os indicadores */
+  padding-top: 5px; /* Espaço reduzido na parte superior */
+  z-index: 2; /* Garantir que fique acima do fundo */
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  padding: 5px;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: #160B5D;
+}
+
+/* Estilo do botão abaixo do carrossel */
+.btn-container-carousel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 50px; /* Aumentado para dar mais espaço antes da próxima seção */
+}
+
+.btnhome-carousel {
+  background-color: #160B5D;
+  color: white;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+  border: none;
+}
+
+/* Sobrescreve a regra do hover para este botão específico */
+.btnhome.btnhome-carousel:hover {
+  background-color: #160B5D;
+  color: white;
+  outline: none;
+  border: none;
+}
+
+.btnhome.btnhome-carousel:hover .seta {
+  color: white;
+}
+
+/* Estilos para a seção "Como funciona" */
+.como-funciona-section {
+  padding: 50px 20px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.como-funciona-title {
+  text-align: center;
+  color: #160B5D;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.como-funciona-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.funciona-card {
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.funciona-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.icone-funciona {
+  width: 50px;
+  height: 50px;
+}
+
+.funciona-card-title {
+  color: #333;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.funciona-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+.funciona-list li {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 8px;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.funciona-list li .icon-item {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.funciona-stats {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #160B5D;
+  padding-top: 10px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* Estilos para os ícones de imagem */
+.icon-item {
+  transition: transform 0.2s ease;
+}
+
+.funciona-list li:hover .icon-item {
+  transform: scale(1.2);
+}
+
+/* Responsividade para a seção Como funciona */
+@media (min-width: 768px) {
+  .como-funciona-cards {
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .funciona-card {
+    flex: 1;
+    max-width: 350px;
+  }
+}
+
+.vagas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 0 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vaga-card {
+  background-color: #160B5D;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.vaga-card:hover {
+  transform: translateY(-5px);
+}
+
+.vaga-card h3 {
+  color: #FFC52D;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.vaga-card p {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.vaga-card .empresa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.vaga-card .empresa img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+}
+
+.vaga-card .empresa span {
+  color: white;
+  font-size: 0.85rem;
+}
+
+.vaga-card .vaga-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.vaga-card .vaga-footer span {
+  color: #ccc;
+  font-size: 0.85rem;
+}
+
+.ver-vaga {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #FFC52D;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.ver-vaga img {
+  width: 16px;
+  height: 16px;
+}
+
+
+
+/* Seção Principais Clientes */
+.clientes-section {
+  padding: 50px 20px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.clientes-title {
+  text-align: center;
+  color: #160B5D;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+/* Slider infinito de clientes */
+.clientes-slider-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 30px 0;
+}
+
+.clientes-slider-track {
+  display: flex;
+  animation: scroll 30s linear infinite;
+  width: fit-content;
+  align-items: center;
+}
+
+.cliente-slide {
+  flex-shrink: 0;
+  width: 180px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30px;
+  transition: transform 0.3s ease;
+}
+
+.cliente-slide:hover {
+  transform: scale(1.1);
+}
+
+.cliente-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+
+/* Animação de scroll infinito */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsividade do slider de clientes */
+@media (min-width: 768px) {
+  .clientes-slider-track {
+    animation: scroll 40s linear infinite;
+  }
+  
+  .cliente-slide {
+    width: 200px;
+    height: 110px;
+    margin: 0 30px;
+    padding: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .clientes-slider-track {
+    animation: scroll 50s linear infinite;
+  }
+  
+  .cliente-slide {
+    width: 220px;
+    height: 120px;
+    margin: 0 35px;
+    padding: 20px;
+  }
+}
+
+/* Seção de Avaliações/Depoimentos */
+.avaliacoes-title-band {
+  padding: 50px 20px 0;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.avaliacoes-title {
+  text-align: center;
+  color: #160B5D;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+/* Carrossel de avaliações - mesmo estilo do carrossel de vagas */
+.avaliacoes-carousel-container {
+  position: relative;
+  width: 92%;
+  max-width: 350px;
+  margin: 0 auto 50px;
+  overflow: hidden;
+  padding-bottom: 30px;
+  padding-top: 5px;
+}
+
+.avaliacoes-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.avaliacoes-carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.avaliacao-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.avaliacao-texto-container {
+  background-color: #FFC52D;
+  padding: 30px 15px 25px;
+  flex: 3;
+}
+
+.avaliacao-texto {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #000000;
+  text-align: justify;
+  font-style: italic;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+.avaliacao-autor-dentro {
+  margin-top: 15px;
+}
+
+.avaliacao-nome-dentro {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 3px 0;
+}
+
+.avaliacao-empresa-dentro {
+  font-size: 0.85rem;
+  color: #000000;
+  margin: 0;
+  font-weight: 500;
+}
+
+.avaliacao-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 15px;
+  background: #FFFFFF;
+  height: 100px;
+  flex: 1;
+}
+
+.avaliacao-logo {
+  width: 140px;
+  height: 60px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Indicadores - mesmo estilo do carrossel de vagas */
+.avaliacoes-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.avaliacoes-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.avaliacoes-indicator.active {
+  background-color: #160B5D;
+}
+
+.avaliacoes-indicator:hover {
+  background-color: #FFC52D;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 767px) {
+  .blue-background-extension {
+    height: 30px; /* Menor em dispositivos móveis */
+  }
+  
+  .vagas-title-band {
+    width: 100%; /* Largura total em dispositivos móveis */
+    padding: 12px 0;
+  }
+  
+  .vagas-title {
+    font-size: 1.2rem;
+  }
+  
+  .carousel-container {
+    width: 100%; /* Largura total em dispositivos móveis */
+    max-width: 280px; /* Largura máxima um pouco menor */
+  }
+  
+  .card {
+    max-width: 280px; /* Cards um pouco menores */
+  }
+  
+  .btnhome-carousel {
+    padding: 10px 24px; /* Botões ligeiramente menores */
+    font-size: 0.9rem;
+  }
+  
+  /* Avaliações responsivo mobile */
+  .avaliacoes-carousel-container {
+    max-width: 280px;
+  }
+  
+  .avaliacao-card {
+    max-width: 280px;
+    min-height: 350px;
+  }
+  
+  .avaliacao-texto-container {
+    padding: 25px 12px 20px;
+    flex: 3;
+  }
+  
+  .avaliacao-texto {
+    font-size: 0.85rem;
+    margin: 0 0 15px 0;
+  }
+  
+  .avaliacao-autor-dentro {
+    margin-top: 12px;
+  }
+  
+  .avaliacao-logo-container {
+    padding: 15px 12px;
+    height: 85px;
+    flex: 1;
+  }
+  
+  .avaliacao-logo {
+    width: 130px;
+    height: 55px;
+  }
+}
+
+@media (min-width: 768px) {
+  .vagas-title-band {
+    width: 60%; /* Faixa amarela menor em tablets */
+  }
+}
+
+@media (min-width: 768px) {
+  .vagas-title-band {
+    width: 40%; /* Faixa amarela ainda menor em desktops */
+    padding: 12px 0;
+  }
+  
+  .vagas-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* Media query para desktops */
+@media (min-width: 1200px) {
+  .vagas-title-band {
+    width: 40%; /* Faixa amarela ainda menor em desktops */
+    padding: 12px 0;
+  }
+  
+  .vagas-title {
+    font-size: 1.4rem;
+  }
+}
+
+.vaga-card h3 {
+  color: #FFC52D;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.vaga-card p {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.vaga-card .empresa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.vaga-card .empresa img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.vaga-card .vaga-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.ver-vaga {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #FFC52D;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.card {
+ background: #FFFFFF;
+ border-radius: 15px;
+ box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+ overflow: hidden;
+ width: 100%;
+ max-width: 320px;
+ color: #333;
+ display: flex;
+ flex-direction: column;
+ cursor: pointer;
+ margin: 0 auto; /* Centralizar o card horizontalmente */
+}
+
+.card h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-style: medium;
+  font-size: 16px;
+}
+
+.card .card-image {
+ width: 100%;
+ height: auto;
+ display: block;
+ border-bottom: 1px solid #eee;
+}
+
+.card .card-content {
+ padding: 16px;
+}
+
+.card .card-title {
+ font-weight: 700;
+ font-size: 1.25rem;
+ margin: 0 0 4px 0;
+}
+
+.card .card-subtitle {
+ font-weight: 400;
+ font-size: 1rem;
+ margin: 0 0 12px 0;
+ color: #555;
+}
+
+.card .card-date {
+ font-weight: 300;
+ font-size: 0.875rem;
+  color: #999;
+}
+
+.card-link {
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}

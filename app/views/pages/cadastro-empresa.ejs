@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/css/cadastro-comum.css" />
+    <link rel="stylesheet" href="/css/validation.css" />
+  </head>
+
+  <body>
+    <header>
+      <%- include('../partials/menu') %>
+    </header>
+
+    <main class="cad-container">
+      <h1 class="cadastro" style="display: block !important; visibility: visible !important; color: #160B5D !important; font-size: 34px !important; text-align: center !important; margin: 20px 0 !important; font-weight: 600 !important; font-family: 'Poppins', sans-serif !important;">Cadastro</h1>
+
+      <form id="form-cadastro" class="cad-form" action="/cadastro-empresa" method="POST" novalidate>
+        <section class="form-section">
+          <p>Digite os dados da sua empresa para se cadastrar</p>
+
+          <% if (typeof errors !== 'undefined' && errors && errors.length) { %>
+            <article class="general-error">
+              <% errors.forEach(function (err) { %>
+                <%= err.msg %><br>
+              <% }) %>
+            </article>
+          <% } %>
+
+          <%
+            function getFieldError(fieldName) {
+              return (errors && errors.length) ? errors.find(function (it) { return it.param === fieldName; }) : null;
+            }
+            function getFieldValue(fieldName) {
+              return (form && form[fieldName]) ? form[fieldName] : '';
+            }
+          %>
+
+          <% var e = getFieldError('razao_social'); %>
+          <input type="text" id="razao_social" name="razao_social" placeholder="Razão social (nome jurídico)" 
+                 value="<%= getFieldValue('razao_social') %>" required />
+          <span class="field-error"><%= e ? e.msg : '' %></span>
+
+          <% var e = getFieldError('nome_fantasia'); %>
+          <input type="text" id="nome_fantasia" name="nome_fantasia" placeholder="Nome Fantasia" 
+                 value="<%= getFieldValue('nome_fantasia') %>" required />
+          <span class="field-error"><%= e ? e.msg : '' %></span>
+
+          <% var e = getFieldError('cnpj'); %>
+          <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ" inputmode="numeric" maxlength="18" 
+                 value="<%= getFieldValue('cnpj') %>" required />
+          <span class="field-error"><%= e ? e.msg : '' %></span>
+
+          <% var e = getFieldError('telefone'); %>
+          <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" inputmode="tel" maxlength="15" 
+                 value="<%= getFieldValue('telefone') %>" required />
+          <span class="field-error"><%= e ? e.msg : '' %></span>
+
+          <label style="margin-top:10px; font-size:0.85rem; color:#666">Logradouro da sede</label>
+
+          <% var e = getFieldError('logradouro'); %>
+          <input type="text" id="logradouro" name="logradouro" placeholder="Rua" 
+                 value="<%= getFieldValue('logradouro') %>" required />
+          <span class="field-error"><%= e ? e.msg : '' %></span>
+
+          <% var e = getFieldError('cidade'); %>
+          <input type="text" id="cidade" name="cidade" placeholder="Cidade" 
+                 value="<%= getFieldValue('cidade') %>" required />
+          <span class="field-error"><%= e ? e.msg : '' %></span>
+
+          <% var e = getFieldError('estado'); %>
+          <select id="estado" name="estado" required>
+            <option value="">Selecione o estado</option>
+            <%
+              const estados = [
+                {value: 'AC', text: 'Acre (AC)'}, {value: 'AL', text: 'Alagoas (AL)'}, 
+                {value: 'AP', text: 'Amapá (AP)'}, {value: 'AM', text: 'Amazonas (AM)'}, 
+                {value: 'BA', text: 'Bahia (BA)'}, {value: 'CE', text: 'Ceará (CE)'}, 
+                {value: 'ES', text: 'Espírito Santo (ES)'}, {value: 'GO', text: 'Goiás (GO)'}, 
+                {value: 'MA', text: 'Maranhão (MA)'}, {value: 'MT', text: 'Mato Grosso (MT)'}, 
+                {value: 'MS', text: 'Mato Grosso do Sul (MS)'}, {value: 'MG', text: 'Minas Gerais (MG)'}, 
+                {value: 'PA', text: 'Pará (PA)'}, {value: 'PB', text: 'Paraíba (PB)'}, 
+                {value: 'PR', text: 'Paraná (PR)'}, {value: 'PE', text: 'Pernambuco (PE)'}, 
+                {value: 'PI', text: 'Piauí (PI)'}, {value: 'RJ', text: 'Rio de Janeiro (RJ)'}, 
+                {value: 'RN', text: 'Rio Grande do Norte (RN)'}, {value: 'RS', text: 'Rio Grande do Sul (RS)'}, 
+                {value: 'RO', text: 'Rondônia (RO)'}, {value: 'RR', text: 'Roraima (RR)'}, 
+                {value: 'SC', text: 'Santa Catarina (SC)'}, {value: 'SP', text: 'São Paulo (SP)'}, 
+                {value: 'SE', text: 'Sergipe (SE)'}, {value: 'TO', text: 'Tocantins (TO)'}
+              ];
+            %>
+            <% estados.forEach(function(estado) { %>
+              <option value="<%= estado.value %>" <%= (form && form.estado === estado.value) ? 'selected' : '' %>><%= estado.text %></option>
+            <% }); %>
+          </select>
+          <span class="field-error"><%= e ? e.msg : '' %></span>
+
+          <section class="row">
+            <article class="col">
+              <% var e = getFieldError('cep'); %>
+              <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric" maxlength="9" 
+                     value="<%= getFieldValue('cep') %>" required />
+              <span class="field-error"><%= e ? e.msg : '' %></span>
+            </article>
+
+            <article class="col">
+              <% var e = getFieldError('complemento'); %>
+              <input type="text" id="complemento" name="complemento" placeholder="Complemento" 
+                     value="<%= getFieldValue('complemento') %>" />
+              <span class="field-error"><%= e ? e.msg : '' %></span>
+            </article>
+          </section>
+        </section>
+      </form>
+
+      <nav class="actions-section">
+        <button type="submit" form="form-cadastro" class="btn-primary">Próximo</button>
+      </nav>
+    </main>
+
+    <footer></footer>
+
+    <!-- jQuery from CDN and our validation script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/js/jquery-validation.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/input-masks.js"></script>
+    <script src="/js/cadastro-empresa-validation.js"></script>
+  </body>
+</html>

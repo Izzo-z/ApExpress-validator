@@ -3,60 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Responsivo</title>
+  <title>Empresas - Ápice</title>
   <link rel="stylesheet" href="/css/empresa.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/footer.css">
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
- </style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
 </head>
 <body>
-    <%- include('../partials/menu') %>
-    <main>
-
-  <p class="txtinicio"><span class="destaque">Processos seletivos</span> focados em experiência e conexão com as juventudes.
-  <span class="destaque">Cursos</span> que abrem portas e moldam o futuro da juventude.</p>
-  
-  <br>
-  <br>
-
-  <p class="subtitulo">Flexibilidade e humanização, tudo isso trazendo diversidade de ponta a ponta em um processo de <span class="destaque">educação e seleção.</span></p>
-
-  <br>
-  <br>
-  <br>
-
-  <a class="btnhome" href="#">Fale com um especialista<span class="seta"><img src="/img/seta.png" alt="Seta para a direita"></span></a>
-
-  <br>
-  <br>
-
-  <a href="#" class="saibamais">Conheça mais <br> <span class="arrow-down"><img src="/img/saibamais.png" alt="Seta para baixo"></span></a>
-
-  <br>
-  <br>
-
-  <figure><img class="imgempresa" src="/img/img-empresa01.png" alt="Imagem da empresa"></figure>
-  
-  <br>
-  <br>
-
-  <section class="destaque-secundaria">
-    <br>
-    <h1 class="txtsec">Por que <span class="dtq1">educação</span> e <span class="dtq2">seleção</span> ?</h1>
-    <br>
-    <p class="txtsec2">A guerra por <span class="destaque">jovens talentos</span> vem se intensificando, especialmente pelos mais diversos, consequência do fortalecimento da <span class="destaque">pauta ESG</span>. processos seletivos que engajam formam embaixadores da sua marca e fazem com que esses talentos se sintam confiantes sobre sua empresa ser o lugar certo. educação e seleção é o caminho para as companhias que se importam de verdade com as juventudes.</p>
-    <br>
-    <figure><img class="imgempresa2" src="/img/img-empresa02.png" alt="Imagem de um grupo de jovens"></figure>
-    <br>
-    <br>
+  <%- include('../partials/menu') %>
+  <section class="hero">
+    <img src="/img/empresas.svg" alt="Empresas Ápice" class="hero-img">
+    <div class="overlay">
+      <div class="title-container">
+        <h1 class="h1">O Ápice é a ponte entre empresas e novas gerações.</h1>
+      </div>
+      <div class="content">
+        <p class="hero-description">Com iniciativas voltadas à divulgação de vagas e à organização de processos seletivos inclusivos, contribuímos para a inserção profissional de jovens e para o crescimento de organizações comprometidas com o impacto social. Juntos, construímos caminhos de oportunidade e transformação.</p>
+      </div>
+      <div class="btn-container-hero">
+        <a class="btnhome" href="#">Quero conectar a minha empresa <span class="seta"><img src="/img/seta.png"></span></a>
+      </div>
+    </div>
   </section>
-
+  
+  <main>
+    <!-- Conteúdo adicional da página aqui -->
   </main>
-    <script src="/js/script.js"></script>
-    <%- include('../partials/footer') %>
+  
+  <script src="/js/script.js"></script>
+  <%- include('../partials/footer') %>
 </body>
 </html>

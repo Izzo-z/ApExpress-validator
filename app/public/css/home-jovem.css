@@ -1,0 +1,642 @@
+/* ========== ESTILO PARA HOME DO JOVEM ========== */
+
+:root {
+  --primary: #160B5D;
+  --secondary: #FFC52D;
+  --accent: #f9c21b;
+  --bg-light: #f8f9ff;
+  --bg-card: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-light: #95a5a6;
+  --border-light: #e8ecf4;
+  --shadow-soft: 0 4px 20px rgba(22, 11, 93, 0.08);
+  --shadow-card: 0 8px 30px rgba(22, 11, 93, 0.12);
+  --radius: 16px;
+  --radius-small: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== BASE STYLES ========== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========== HEADER ========== */
+
+.main-header {
+  position: relative;
+  z-index: 100;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-top: 0; /* Remove padding do CSS, pois menujovem.ejs já define */
+}
+
+/* ========== LAYOUT PRINCIPAL ========== */
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+  margin-top: 20px; /* Espaço adicional do menu fixo */
+}
+
+/* ========== SEÇÃO DE BOAS-VINDAS ========== */
+
+.welcome-section {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.greeting {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 10;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+/* ========== FORMULÁRIO DE BUSCA ========== */
+
+.search-form {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 24px 16px 20px;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: var(--transition);
+  box-shadow: var(--shadow-soft);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(22, 11, 93, 0.1);
+}
+
+.search-input::placeholder {
+  color: var(--text-light);
+}
+
+.search-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--secondary);
+  border: none;
+  border-radius: var(--radius-small);
+  padding: 12px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn:hover {
+  background: var(--accent);
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* ========== TÍTULOS DE SEÇÃO ========== */
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.view-all-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.view-all-link:hover {
+  color: var(--accent);
+}
+
+/* ========== AÇÕES RÁPIDAS ========== */
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-content: start;
+}
+
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text-primary);
+  border: 2px solid transparent;
+  transition: var(--transition);
+  box-shadow: var(--shadow-soft);
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--border-light);
+}
+
+.action-icon {
+  flex-shrink: 0;
+  padding: 12px;
+  border-radius: var(--radius-small);
+  background: var(--bg-light);
+  color: var(--primary);
+}
+
+.action-card.processos .action-icon {
+  background: #e8f4fd;
+  color: #1976d2;
+}
+
+.action-card.curriculo .action-icon {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.action-card.reunioes .action-icon {
+  background: #e8f5e8;
+  color: #388e3c;
+}
+
+.action-text {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* ========== CARD DE VAGA ========== */
+
+.job-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(22, 11, 93, 0.15);
+}
+
+.job-header {
+  margin-bottom: 16px;
+}
+
+.job-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.job-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: normal;
+}
+
+/* ========== TAGS DA VAGA ========== */
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  list-style: none;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border-light);
+}
+
+.tag.company {
+  background: #e8f4fd;
+  color: #1976d2;
+  border-color: #bbdefb;
+}
+
+.tag.category {
+  background: #fff3e0;
+  color: #f57c00;
+  border-color: #ffcc02;
+}
+
+.tag.type {
+  background: #e8f5e8;
+  color: #388e3c;
+  border-color: #c8e6c9;
+}
+
+/* ========== FOOTER DA VAGA ========== */
+
+.job-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.salary {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.apply-btn {
+  background: var(--secondary);
+  color: var(--primary);
+  padding: 12px 24px;
+  border-radius: var(--radius-small);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  border: 2px solid var(--secondary);
+}
+
+.apply-btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 194, 27, 0.4);
+}
+
+/* ========== ENTREVISTAS ========== */
+
+.interviews-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.interview-item {
+  display: flex;
+  gap: 20px;
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+}
+
+.interview-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.interview-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-small);
+  text-align: center;
+}
+
+.day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.month {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.interview-details {
+  flex: 1;
+}
+
+.interview-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.interview-company {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.interview-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+/* Tablet - 768px a 1024px */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .dashboard-container {
+    padding: 20px 24px;
+    max-width: 900px;
+  }
+  
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .jobs-container {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  
+  .interviews-list {
+    gap: 14px;
+  }
+}
+
+/* Mobile - até 768px */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 16px;
+    gap: 24px;
+    margin-top: 16px;
+  }
+  
+  .greeting {
+    font-size: 2rem;
+  }
+  
+  .actions-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .action-card {
+    padding: 16px;
+    gap: 14px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .jobs-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .job-card {
+    padding: 20px;
+  }
+  
+  .badge-list {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .badge-item {
+    justify-content: flex-start;
+  }
+  
+  .job-actions {
+    margin-top: 16px;
+  }
+  
+  .btn-apply {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+  }
+  
+  .interview-item {
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .interview-date {
+    min-width: 50px;
+  }
+  
+  .interviews-footer {
+    margin-top: 20px;
+  }
+  
+  .view-schedule-btn {
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+  }
+}
+
+/* Mobile pequeno - até 480px */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 12px;
+    gap: 20px;
+    margin-top: 12px;
+  }
+  
+  .welcome-section {
+    padding: 20px 12px;
+  }
+  
+  .greeting {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+  
+  .tagline {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  
+  .search-input {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+  
+  .action-card {
+    padding: 14px;
+    gap: 12px;
+  }
+  
+  .action-text {
+    font-size: 0.9rem;
+  }
+  
+  .job-card {
+    padding: 16px;
+  }
+  
+  .job-title {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  
+  .badge-list {
+    gap: 6px;
+  }
+  
+  .badge-item {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+  
+  .salary-value {
+    font-size: 1.1rem;
+  }
+  
+  .interview-item {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .interview-date {
+    min-width: 45px;
+    padding: 8px;
+  }
+  
+  .day {
+    font-size: 1.2rem;
+  }
+  
+  .month {
+    font-size: 0.7rem;
+  }
+  
+  .interview-title {
+    font-size: 1rem;
+  }
+  
+  .interview-company {
+    font-size: 0.85rem;
+  }
+  
+  .interview-time {
+    font-size: 0.8rem;
+  }
+}
+
+/* Desktop large - acima de 1200px */
+@media (min-width: 1200px) {
+  .dashboard-container {
+    padding: 30px 40px;
+    gap: 35px;
+  }
+  
+  .actions-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .jobs-container {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+  }
+  
+  .interviews-list {
+    gap: 18px;
+  }
+  
+  .interview-item {
+    padding: 24px;
+  }
+}
+
+/* ========== INTEGRAÇÃO COM JOB-CARDS ========== */
+
+/* Contêiner de vagas - idêntico ao da página de vagas */
+.jobs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.no-jobs-message {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 40px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 2px dashed var(--border-light);
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Vagas - ÁPICE</title>
+    <link rel="stylesheet" href="/css/vagas.css">
+    <link rel="stylesheet" href="/css/minhasvagas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <%- include('../partials/menu') %>
+    </header>
+
+    <main class="minhas-vagas-main">
+        <section class="container">
+            <section class="page-header">
+                <nav class="title-container">
+                    <img src="/img/mala.svg" alt="" class="mala-icon">
+                    <h1 class="page-title">MINHAS VAGAS</h1>
+                </nav>
+                <p class="page-subtitle">Acesse suas vagas candidatadas</p>
+            </section>
+            <section class="vagas-section">
+                <header class="section-header">
+                    <h2><img src="/img/certo.svg" alt=""> Vagas ativas</h2>
+                </header>
+
+                <section class="vagas-grid">
+                    <% 
+                    // Usando as vagas realmente candidatadas
+                    const vagasCandidatadasObj = {};
+                    if (typeof vagasCandidatadas !== 'undefined' && vagasCandidatadas.length > 0) {
+                        vagasCandidatadas.forEach(vagaId => {
+                            if (vagas && vagas[vagaId]) {
+                                vagasCandidatadasObj[vagaId] = vagas[vagaId];
+                            }
+                        });
+                    }
+                    %>
+                    
+                    <% if (vagasCandidatadasObj && Object.keys(vagasCandidatadasObj).length) { %>
+                        <% Object.values(vagasCandidatadasObj).forEach(function(vaga) { %>
+                            <article class="minhas-vagas-card">
+                                <%- include('../partials/job-card', { vaga: vaga, infoVagas: infoVagas }) %>
+                            </article>
+                        <% }) %>
+                    <% } else { %>
+                        <p>Nenhuma vaga ativa encontrada.</p>
+                    <% } %>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

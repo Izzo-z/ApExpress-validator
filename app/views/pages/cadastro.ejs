@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro</title>
-  <link rel="stylesheet" href="/css/cadastro.css" />  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" /> 
+  <title>Ápice</title>
+  <link rel="stylesheet" href="/css/cadastro-comum.css" />
+  <link rel="stylesheet" href="/css/validation.css" /> 
 </head>
 
 <body>
@@ -14,36 +14,69 @@
     
   <%- include('../partials/menu') %>
 
-    <h1 class="cadastro">Cadastro</h1>
+    <h1 class="cadastro" style="display: block !important; visibility: visible !important; color: #160B5D !important; font-size: 34px !important; text-align: center !important; margin: 20px 0 !important; font-weight: 600 !important; font-family: 'Poppins', sans-serif !important;">Cadastro</h1>
 
   </header>  
 
 <main class="cad-container">
 
 
-  <nav class="form-section">
+  <section class="form-section">
         <p>Digite seus dados de acesso para se cadastrar</p>
-    <form class="cad-form">
-      <input type="text" id="nome" name="nome" placeholder="Nome completo" required />
+        
+        <!-- Mostrar erros gerais se existirem -->
+        <% if (typeof errors !== 'undefined' && errors && errors.length > 0) { %>
+          <article class="general-error">
+            <% errors.forEach(function(error) { %>
+              <%= error.msg %><br>
+            <% }) %>
+          </article>
+        <% } %>
+        
+    <form id="cadastroForm" class="cad-form" method="POST" action="/cadastro">
+      <input type="text" id="nome" name="nome" placeholder="Nome completo" 
+             value="<%= typeof form !== 'undefined' && form.nome ? form.nome : '' %>" required />
 
-      <input type="text" id="email" name="email" placeholder="Email" required />
+      <input type="email" id="email" name="email" placeholder="Email" 
+             value="<%= typeof form !== 'undefined' && form.email ? form.email : '' %>" required />
 
-  
-      <input type="text" id="telefone" name="telefone" placeholder="Telefone" required />
+      <input type="tel" id="telefone" name="telefone" placeholder="Telefone" 
+             value="<%= typeof form !== 'undefined' && form.telefone ? form.telefone : '' %>" required />
 
+      <input type="password" id="password" name="password" placeholder="Crie uma senha" required />
 
-      <input type="text" id="password" name="password" placeholder="Crie uma senha" required />
-
-
-      <input type="text" id="password" name="password" placeholder="Confirme sua senha" required />
-
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha" required />
 
     </form>
-  </nav> 
+  </section> 
 
-  <nav class="actions-section">
-      <a href="/cad2" class="btn-primary">Próximo</a>
+<nav class="actions-section">
+      <button id="btnProximo" class="btn-primary">Próximo</button>
+      <span class="divider">
+        <span>ou</span>
+      </span>
+      <button id="btnEmpresa" class="btn-secondary">Cadastrar Empresa</button>
   </nav>
+<script src="/js/validation.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const cadastroValidator = initFormValidation('cadastroForm');
+  
+  // Botão próximo com validação
+  document.getElementById('btnProximo').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (cadastroValidator.validateForm()) {
+      // Se validação frontend passou, submeter o formulário
+      document.getElementById('cadastroForm').submit();
+    }
+  });
+  
+  // Botão empresa (sem validação)
+  document.getElementById('btnEmpresa').addEventListener('click', function() {
+    window.location.href = '/cadastro-empresa';
+  });
+});
+</script>
 
 </main>
 
@@ -51,7 +84,6 @@
 
 </footer>
 
-<script src="/js/script.js"></script>
 
 </body>
 </html>

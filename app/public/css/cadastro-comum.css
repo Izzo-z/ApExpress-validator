@@ -1,0 +1,488 @@
+/* ========== ESTILOS PADRONIZADOS PARA CADASTROS ========== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #e6e6e6;
+  --card: #ffffff;
+  --accent: #f9c21b;
+  --muted: #9b9bb3;
+  --primary: #160B5D;
+  --secundary: #FFC52D;
+  --input-border: #e6e6f0;
+  --radius: 18px;
+  --input-radius: 12px;
+  --input-padding: 16px 22px;
+  --input-font-size: 16px;
+  --input-font-weight: 400;
+  --text-color: #333333;
+  --container-max-width: 400px;
+  --form-gap: 1.8rem;
+}
+
+/* Base styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  font-weight: var(--input-font-weight);
+  color: var(--text-color);
+  background: var(--bg);
+}
+
+/* Header título */
+.cadastro {
+  display: block !important;
+  visibility: visible !important;
+  text-align: center;
+  color: var(--primary) !important;
+  font-size: 34px;
+  margin: 20px 0;
+  font-weight: 600;
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  z-index: 10;
+  position: relative;
+}
+
+/* Container principal */
+.cad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  gap: 8px;
+  padding: 18px 16px 40px;
+}
+
+/* Seção do formulário */
+.form-section {
+  width: 100%;
+  max-width: var(--container-max-width);
+}
+
+.form-section p {
+  margin: 0 0 24px 0;
+  color: var(--text-color);
+  font-size: 16px;
+  text-align: center;
+  font-weight: var(--input-font-weight);
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+}
+
+/* Formulário */
+.cad-form {
+  width: 100%;
+  max-width: var(--container-max-width);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-gap);
+}
+
+/* ========== INPUTS PADRONIZADOS ========== */
+
+/* Todos os tipos de input */
+.cad-form input[type="text"],
+.cad-form input[type="tel"],
+.cad-form input[type="email"],
+.cad-form input[type="password"],
+.cad-form input[type="date"],
+.cad-form input[type="number"],
+.cad-form select,
+.cad-form textarea {
+  width: 100%;
+  padding: var(--input-padding);
+  font-size: var(--input-font-size);
+  font-weight: var(--input-font-weight);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  box-sizing: border-box;
+  background: #fff;
+  transition: all 0.2s ease;
+  text-align: left;
+  line-height: 1.4;
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  color: var(--text-color);
+}
+
+/* Placeholders */
+.cad-form input::placeholder,
+.cad-form textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+/* Focus state */
+.cad-form input:focus,
+.cad-form select:focus,
+.cad-form textarea:focus {
+  box-shadow: 0 0 0 3px rgba(22, 11, 93, 0.06);
+  border-color: rgba(22, 11, 93, 0.12);
+  outline: none;
+}
+
+/* Select específico */
+.cad-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+/* Textarea específico */
+.cad-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ========== ESTADOS DE VALIDAÇÃO ========== */
+
+/* Estado de erro */
+.cad-form input.error,
+.cad-form select.error,
+.cad-form textarea.error {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1) !important;
+}
+
+/* Estado válido */
+.cad-form input.valid,
+.cad-form select.valid,
+.cad-form textarea.valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* ========== LAYOUTS ESPECIAIS ========== */
+
+/* Layout lado a lado */
+.lado {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.lado .cep {
+  flex: 2;
+}
+
+.lado .comp {
+  flex: 3;
+}
+
+/* Steps de formulário */
+.form-steps {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  justify-content: center;
+  gap: 16px;
+}
+
+.form-steps li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.step.active {
+  background: var(--primary);
+  color: white;
+}
+
+.step-label {
+  font-size: 11px;
+  color: var(--text-color);
+  font-weight: var(--input-font-weight);
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Labels */
+.cad-form label {
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: var(--input-font-weight);
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ========== BOTÕES ========== */
+
+.actions-section {
+  width: 100%;
+  max-width: var(--container-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  padding: 16px 18px;
+  border-radius: var(--input-radius);
+  border: none;
+  font-weight: var(--input-font-weight);
+  font-size: var(--input-font-size);
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(22, 11, 93, 0.12);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.btn-primary:hover {
+  background: #1a0d6b;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(22, 11, 93, 0.18);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-block;
+  width: 100%;
+  background: transparent;
+  color: var(--primary);
+  padding: 16px 18px;
+  border-radius: var(--input-radius);
+  border: 2px solid var(--primary);
+  font-weight: var(--input-font-weight);
+  font-size: var(--input-font-size);
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* ========== LAYOUT FLEXÍVEL ========== */
+
+/* Container para inputs em linha */
+.row, section.row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.row .col, .row article.col, section.row article.col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Elementos semânticos com mesmo comportamento das divs */
+.form-section, section.form-section {
+  width: 100%;
+  max-width: var(--container-max-width);
+}
+
+.general-error, article.general-error {
+  background: rgba(198, 40, 40, 0.1);
+  border: 1px solid rgba(198, 40, 40, 0.3);
+  color: var(--error-color);
+  padding: 12px 16px;
+  border-radius: var(--input-radius);
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.actions-section, nav.actions-section {
+  width: 100%;
+  max-width: var(--container-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.error-container, article.error-container {
+  margin-bottom: 16px;
+}
+
+.lado, section.lado {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.divider span {
+  background: var(--card);
+  padding: 0 16px;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: var(--input-font-weight);
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--input-border);
+  z-index: 0;
+}
+
+/* ========== RESPONSIVO ========== */
+
+@media (max-width: 640px) {
+  .cadastro {
+    font-size: 28px;
+    margin-top: 8px;
+  }
+  
+  .cad-container {
+    padding: 12px;
+    min-height: calc(100vh - 100px);
+  }
+  
+  .cad-form {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+  
+  .form-section p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .cad-form input,
+  .cad-form select,
+  .btn-primary,
+  .btn-secondary {
+    padding: 18px 20px;
+    font-size: 15px;
+    font-weight: var(--input-font-weight);
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  }
+  
+  .lado {
+    flex-direction: column;
+    gap: var(--form-gap);
+  }
+  
+  .form-steps {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+  
+  .step-label {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cad-container {
+    padding: 8px;
+  }
+  
+  .cad-form {
+    padding: 20px 16px;
+  }
+  
+  .cadastro {
+    font-size: 24px;
+  }
+}
+
+/* ========== ANIMAÇÕES ========== */
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* ========== UTILITÁRIOS ========== */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.small-text {
+  font-size: 12px;
+  color: var(--text-color);
+  font-weight: var(--input-font-weight);
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+  margin-top: 8px;
+}

@@ -1,68 +1,44 @@
-// função do menu hamburguer funcional
+document.addEventListener('DOMContentLoaded', function() {
+    const menuHamburguer = document.getElementById('menuHamburguer');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMobileMenu = document.querySelector('.close-mobile-menu');
 
-const menuHamburguer = document.getElementById('menuHamburguer');
-const mobileMenu = document.getElementById('mobileMenu');
-const menuOverlay = document.getElementById('menuOverlay');
+    function openMenu() {
+        mobileMenu.classList.add('open');
+        menuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
 
-menuHamburguer.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-  menuOverlay.classList.toggle('open');
-});
+    function closeMenu() {
+        mobileMenu.classList.remove('open');
+        menuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
 
-menuOverlay.addEventListener('click', () => {
-  mobileMenu.classList.remove('open');
-  menuOverlay.classList.remove('open');
-});
-
-//função de fechar o menu hambuguer
-const closeMobileMenu = document.querySelector('.close-mobile-menu');
-if (closeMobileMenu) {
-  closeMobileMenu.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    menuOverlay.classList.remove('open');
-  });
-}
-
-
-
-// função do botão vagas/cursos (ver como fazer para alternar a página)
-document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.toggle-button');
-    const buttonGroup = document.querySelector('.button-group');
-
-    if (buttonGroup) {
-        buttonGroup.addEventListener('click', (event) => {
-            const clickedButton = event.target;
-
-            if (clickedButton.classList.contains('toggle-button')) {
-                buttons.forEach(button => {
-                    button.classList.remove('active');
-                    button.setAttribute('aria-pressed', 'false');
-                });
-                clickedButton.classList.add('active');
-                clickedButton.setAttribute('aria-pressed', 'true');
-                const target = clickedButton.dataset.target;
-            }
+    if (menuHamburguer) {
+        menuHamburguer.addEventListener('click', function(e) {
+            e.preventDefault();
+            openMenu();
         });
     }
-});
 
-// filtrar
+    if (closeMobileMenu) {
+        closeMobileMenu.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeMenu();
+        });
+    }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const btnFiltrar = document.querySelector('.btn-filtrar');
-  const filterBox = document.querySelector('.filter-box');
-  const closeBtn = document.querySelector('.close-btn');
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function() {
+            closeMenu();
+        });
+    }
 
-  if (btnFiltrar && filterBox) {
-    btnFiltrar.addEventListener('click', () => {
-      filterBox.classList.toggle('visivel');
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
     });
-  }
-
-  if (closeBtn && filterBox) {
-    closeBtn.addEventListener('click', () => {
-      filterBox.classList.remove('visivel');
-    });
-  }
 });
