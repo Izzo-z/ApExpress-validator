@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= empresa.nome %> - Editar Perfil</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ </style>
+</head>
+<body>
+    <header>
+        <%- include('../partials/menu') %>
+    </header>
+    <main>
+        <%
+            let erroValidacao = { nome : "", type : "", area : "",descricao :"", siteempresa : "", emailempresa : "", redeSociais: { instagram : "", facebook : "", linkedin : "" }};
+            let msgErro = { nome : "", type : "", area : "",descricao :"", siteempresa : "", emailempresa : "", redeSociais: { instagram : "", facebook : "", linkedin : "" }};
+
+          if (listaErros && listaErros.length > 0) {
+            listaErros.forEach(function(erro) {              
+              if (erro.path === "nome") {
+                erroValidacao.nome = "erro";
+                msgErro.nome = erro.msg;
+              }
+              if (erro.path === "type") {
+                erroValidacao.type = "erro";
+                msgErro.type = erro.msg;
+              }
+              if (erro.path === "area") {
+                erroValidacao.area = "erro";
+                msgErro.area = erro.msg;
+              }
+              if (erro.path === "descricao") {
+                erroValidacao.descricao = "erro";
+                msgErro.descricao = erro.msg;
+              }
+              if (erro.path === "siteempresa") {
+                erroValidacao.siteempresa = "erro";
+                msgErro.siteempresa = erro.msg;
+              }
+              if (erro.path === "emailempresa") {
+                erroValidacao.emailempresa = "erro";
+                msgErro.emailempresa = erro.msg;
+              }
+              /*redes sociais*/
+              if (erro.path === "instagram") {
+                erroValidacao.instagram = "erro";
+                msgErro.instagram = erro.msg;
+              }
+              if (erro.path === "facebook") {
+                erroValidacao.facebook = "erro";
+                msgErro.facebook = erro.msg;
+              }
+              if (erro.path === "linkedin") {
+                erroValidacao.linkedin = "erro";
+                msgErro.linkedin = erro.msg;
+              }              
+            });
+          }
+        %>
+
+        <h1>Editar Perfil</h1>
+        <section class="edit-profile-wrapper">
+            <form method="post" action="/empresa/editar" id="edit-profile-form">
+                <Fieldset class="fs-persoinfo">
+                    <label for="nome">Nome da empresa:</label>
+                    <input type="text" name="nome" id="nome" value="<% empresa.nome %>" class="<&= erroValidacao.nome %>"><span><%= msgErro.nome %></span>
+                    <label for="type">Tipo de empresa:</label>
+                    <select name="type" id="type" value="<% empresa.type %>" class="<%= erroValidacao.type %>"><span><%= msgErro.type %></span>
+                        <option value="Industrial"> Industrial </option>
+                        <option value="Comercial"> Comercial </option>
+                        <option value="Empresarial"> Comércio Exterior </option>
+                        <option value="Varejo"> Varejo </option>
+                    </select>
+                    <label for="area">Área de atuação:</label>
+                    <select name="area" id="area" value="<% empresa.area " class="<%= erroValidacao.area %>"><span><%= msgErro.area %></span>
+                        <option value="Admnistração"> Admnistração </option>
+                        <option value="Comercial e Vendas"> Comercial e Vendas </option>
+                        <option value="Comércio Exterior"> Comércio Exterior </option>
+                        <option value="Educação"> Educação </option>
+                        <option value="Financeira"> Financeira </option>
+                        <option value="Hotelaria e Turismo"> Hotelaria e Turismo </option>
+                        <option value="Informática"> Informática </option>
+                        <option value="Saúde"> Saúde </option>
+                        <option value="Suprimentos"> Suprimentos </option>
+                        <option value="Agricultura, Pecuária e Veterinária"> Agricultura, Pecuária e Veterinária </option>
+                        <option value="Artes, Arquitetura e Design"> Artes, Arquitetura e Design </option>
+                        <option value="Comunicação/Marketing"> Comunicação/Marketing </option>
+                        <option value="Engenharia"> Engenharia </option>
+                        <option value="Industrial"> Industrial </option>
+                        <option value="Jurídica"> Jurídica </option>
+                        <option value="Técnica"> Técnica </option>
+                        <option value="Telemarketing"> Telemarketing </option>
+                        <option value="Telecomunicações"> Telecomunicações </option>
+                        <option value="Serviços Sociais"> Serviços Sociais </option>
+                    </select>
+                </Fieldset>
+                <fieldset class="fs-desc">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" id="descricao" value="<%= empresa.descricao %>" minlength="50" maxlength="350"><span><%= msgErro.descricao %></span>
+                </fieldset>
+                <fieldset class="fs-url">
+                    <label for="siteempresa">siteempresa</label>
+                    <input type="url" name="siteempresa" id="siteempresa" value="<%= empresa.siteempresa %>" ><span><%= msgErro.siteempresa %></span>
+                    <label for="emailempresa">emailempresa</label>
+                    <input type="email" name="emailempresa" id="emailempresa" value="<%= empresa.emailempresa %>" ><span><%= msgErro.emailempresa %></span>
+                </fieldset>
+                <fieldset class="fs-rs">
+                    <label for="instagram">instagram</label>
+                    <input type="url" name="instagram" id="instagram" value="<%= empresa.instagram %>" ><span><%= msgErro.instagram %></span>
+                    <label for="facebook">facebook</label>
+                    <input type="url" name="facebook" id="facebook" value="<%= empresa.facebook %>" ><span><%= msgErro.facebook %></span>
+                    <label for="linkedin">Linkedin</label>
+                    <input type="url" name="linkedin" id="linkedin" value="<%= empresa.linkedin %>" ><span><%= msgErro.linkedin %></span>
+                </fieldset>
+                <button type="submit">Salvar alterações</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

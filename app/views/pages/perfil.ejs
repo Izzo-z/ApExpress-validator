@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil Profissional</title>
     <link rel="stylesheet" href="/css/perfil.css">
+      <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+ </style>
+
 </head>
 <body>
     <header>
@@ -20,7 +30,7 @@
             <% } %>
         </header>
 
-        <form action="/upload-profile" method="POST" enctype="multipart/form-data" class="upload-section">
+        <form action="/upload-profi-le" method="POST" enctype="multipart/form-data" class="upload-section">
             <input type="file" name="profileImage" accept="image/*" id="profileImage" style="display: none;">
             <button type="button" class="upload-btn" onclick="document.getElementById('profileImage').click()">
                 Alterar foto de perfil

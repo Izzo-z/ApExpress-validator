@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= empresa.nome %> - Perfil</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100900;1,100900&family=Montserrat:ital,wght@0,100900;1,100900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ </style>
+</head>
+<body>
+    <header>
+        <%- include('../partials/menu') %>
+    </header>
+    <main>
+    <section class="profile-top">
+        <img class="profile-pic" src="<%= empresa.profilepicture %>" alt="Logo da empresa">
+        <label><%= empresa.type %> - <%= empresa.area %></label>
+    </section>
+    <section class="profile-main">
+        <section class="desc">
+            <h2 class="title-desc">Sobre a empresa</h2>
+            <p class="text-desc"><%= empresa.descricao %></p>
+        </section>
+        <section class="url-placement">
+            <ul>
+              <li>
+                <a href="<%= empresa.siteempresa %>" target="_blank" rel="noopener">
+                  <img class="icon-url" width="32px" height="32px" src="/img/site.svg" alt="Site da empresa">
+                  <span><%= empresa.siteempresa %></span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:<%= empresa.emailempresa %>">
+                  <img class="icon-url" width="32px" height="32px" src="/img/email.svg" alt="Email da empresa">
+                  <span><%= empresa.emailempresa %></span>
+                </a>
+              </li>
+            </ul>
+        </section>
+        <section class="rs-grid">
+            <h2>Redes sociais</h2>
+                <% const rs = empresa.redesSociais; %>
+                <% if (rs.instagram || rs.facebook || rs.linkedin) { %>
+                    <ul>
+                    <% if (rs.instagram) { %>
+                        <li><img src="/img/insta.svg" width="48px" height="48px"><a href="<%= rs.instagram %>" target="_blank" rel="noopener">Instagram</a></li>
+                    <% } %>
+                    <% if (rs.facebook) { %>
+                        <li><img src="/img/facebook.svg" width="48px" height="48px"><a href="<%= rs.facebook %>" target="_blank" rel="noopener">Facebook</a></li>
+                    <% } %>
+                    <% if (rs.linkedin) { %>
+                        <li><img src="/img/linkedin.svg" width="48px" height="48px"><a href="<%= rs.linkedin %>" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <% } %>
+                    </ul>
+                <% } else { %>
+                    <p>Nenhuma rede social cadastrada.</p>
+                <% } %>
+        </section>
+    </section>
+    <section class="btn-edit">
+        <button class="edit-button" id="btnEditar">Editar perfil</button>
+                    <script>
+                      document.getElementById("btnEditar").addEventListener("click", () => {
+                        window.location.href = "/empresa/editprofileempresa";
+                      });
+                    </script>
+    </section>
+    <section class="profile-tab-vagas">
+        <%- include('../partials/job-card', { vaga: vaga }) %>
+    </section>
+
+    
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>
